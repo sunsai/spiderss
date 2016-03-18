@@ -1,6 +1,5 @@
 gulp = require('gulp')
 nodemon = require('gulp-nodemon')
-sass = require('gulp-ruby-sass')
 del = require('del')
 runsequence = require('run-sequence')
 browsersync = require('browser-sync')
@@ -22,25 +21,28 @@ gulp.task('miniHTML', ->
   console.log('this is miniHTML task.............')
 )
 gulp.task('build', (callback)->
-  runsequence(['miniJS', 'miniCSS', 'miniHTML'], callback)
+  runsequence(['clean'], ['miniJS', 'miniCSS', 'miniHTML'], callback)
 )
-gulp.task('develop', ->
+gulp.task('develop', (callback) ->
   nodemon({
     script: 'bin/www'
     ext: 'js ejs coffee html'
     tasks: ['build']
   })
+  callback()
 )
 gulp.task('browsync', ->
   browsersync({
-    proxy: 'localhost:8800'
+    proxy: 'http://localhost:3000'
+    port:8800
+    notify:true
   })
 )
 gulp.task('watch', ->
-  gulp.watch(['./../*.{css,js,ejs,coffee}'], 'reload')
+  gulp.watch(['./routes/**/*.*','./spiders/**/*.js', './views/**/*.ejs', './public/**/*.*'], ['reload'])
 )
 gulp.task('reload', (callback)->
-  runsequence(['develop'], ['browsync'], ['bsreload'], callback)
+  runsequence(['bsreload'], callback)
 )
 gulp.task('bsreload', ->
   browsersync.reload()

@@ -1,0 +1,44 @@
+.navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  height: 60px;
+}
+
+.row {
+  margin-top: 65px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.row .page-header {
+  padding-bottom: 9px;
+  padding: 5px 5px;
+  margin: 0 0 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#leftnav {
+  text-align: center;
+}
+#leftnav li:hover {
+  background: #f5f5f5;
+}
+#leftnav a {
+  color: #000;
+  font-size: 14px;
+  font-family: "Microsoft YaHei UI";
+  font-weight: bold;
+}
+#leftnav a:link {
+  text-decoration: none;
+}
+#leftnav a:visited {
+  text-decoration: none;
+}
+#leftnav a:active {
+  text-decoration: none;
+}
+#leftnav a:hover {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=css.css.map */
