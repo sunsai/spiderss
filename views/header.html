@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)http://www.cbooo.cn/ -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>中国票房</title>
+    <meta name="keywords" content="中国票房,电影票房,票房,北美票房,内地票房，票房统计,电影票房数据库,电影排片,排片统计,排片,荒野猎人,疯狂动物城,女汉子真爱公式,神战：权力之眼,叶问3,洛杉矶捣蛋计划,美人鱼,功夫熊猫3,飞鹰艾迪,恐怖禁忌之红旗袍">
+    <meta name="description" content="中国票房,专注于票房数据,提供电影日票房,周票房,年度票房,北美票房,全球票房,历史票房,排片数据。如:,荒野猎人,疯狂动物城,女汉子真爱公式,神战：权力之眼,叶问3,洛杉矶捣蛋计划,美人鱼,功夫熊猫3,飞鹰艾迪,恐怖禁忌之红旗袍">
+    <link rel="stylesheet" href="./中国票房_files/reset.css">
+    <link rel="stylesheet" href="./中国票房_files/style.css">
+    <script src="./中国票房_files/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="./中国票房_files/style.js"></script>
+    <script src="./中国票房_files/esl.js" type="text/javascript"></script>
+    <script src="./中国票房_files/drawChart.js" type="text/javascript"></script>
+    <script>
+        arr[0] = "http://www.cbooo.cn/largerpic/205222.jpg";
+        arr[1] = "http://www.cbooo.cn/largerpic/156682.jpg";
+        arr[2] = "http://www.cbooo.cn/largerpic/224231.jpg";
+
+        
+
+        var dayNames = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六");
+        var _topdate = new Date();
+        var _topdatestr = _topdate.getFullYear() + "-" + (_topdate.getMonth()+1) + "-" + _topdate.getDate() + " " + dayNames[_topdate.getDay()];
+        var _dataR = {
+            moviepic: "",
+            moviepictext: "",
+            moviename: "",
+            country: "",
+            runtime: "",
+            p_daoyan: "",
+            p_bianju: "",
+            p_yanyuan: ""
+        };
+        var _poplist;
+        $(document).ready(function () {
+            InitBannerFirstPic();
+            getPieData();
+            QrCode();
+            $("#week").html(_topdatestr);
+            $(".code-box").hover(function () {
+                $(this).find('.code-warp').css("display", "block")
+            },
+            function () {
+                $(this).find(".code-warp").css("display", "none")
+            })
+        });
+        function QrCode(){
+            $("#dQrCode").bind("click", function () {
+                if($("#dcodebox").css("display") != "block")
+                {
+                    $("#imgQrCode").attr("src", "/Information/GetQrCode?url=http://www.cbooo.cn/");
+                }
+                $("#dcodebox").toggle();
+            });
+        }
+        function InitBannerFirstPic(){
+            $("#changeImg").css('background-image', 'url(' + arr[0] + ')');
+        }
+        function ChangeTopR(movieid){
+            $("#topdatatr tr").css("color", "#000000");
+            $("#" + movieid).css("color", "#00a0e9");
+            $("#dvBannerRight dl").css("display", "none");
+            $("#r_" + movieid).css("display", "block");
+
+            //$("#dvBannerRight dl").fadeOut();
+            //$("#r_" + movieid).fadeIn();
+            
+        }
+
+        function ChangeColor(movieid){
+            $("#" + movieid).css("color", "#000000");
+        }
+
+        function gotom(movieid){
+            window.location.href = "/m/" + movieid;
+        }
+
+        //饼图 - 明日排片
+        function getPieData(){
+            $.ajax({
+                url: '/Home/getScreenData',
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    var arrObj = getChartData(data.data1);                    
+                    var myDate = new Date();
+                    var nowTimeStr = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate();                   
+                    if (browserRedirect()) {
+                        drawChar.drawPie_wap_new('divScreenCanvas', nowTimeStr + '全国排片统计', arrObj.nameArr, arrObj.countArr);
+                    } else {
+                        drawChar.drawPie_day_new('divScreenCanvas', nowTimeStr + '全国排片统计', arrObj.nameArr, arrObj.countArr);
+                    }
+                }
+            });
+        }
+
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        var getChartData = function (arrData) {
+            var leng = arrData.length;
+            var result = {
+                nameArr: [],
+                countArr: []
+            };
+            for (var i = 0; i < leng; i++) {
+                var mName = arrData[i].moviename;
+                if (mName.length > 8) mName = mName.substring(0, 8) + '... ' + arrData[i].Per_num + '%';
+                else mName = mName + ' ' + arrData[i].Per_num + '%';
+                var cb = {
+                    value: arrData[i].movienum,
+                    name: mName,
+                    itemStyle: {
+                        normal: {
+                            color: drawChar.colorArr[i]
+                        }
+                    }
+                };
+                result.nameArr.push(mName);
+                result.countArr.push(cb);
+            }
+            return result;
+        };
+
+        var ckDate = function (num) {
+            if (num < 10)
+                num = '0' + num;
+            return num;
+            
+        };
+
+        function search() {
+            var txtSearch = $('#txtSearch').val();
+            var url = '/search?k=' + encodeURI(txtSearch);
+
+            if (txtSearch == '请输入影片/影人名称' || txtSearch == '' || txtSearch == 'null')
+                return;
+            window.location.href = url;
+        }
+        function enterSearch() {
+            var event = window.event || arguments.callee.caller.arguments[0];
+            if (event.keyCode == 13) {
+                search();
+            }
+        }
+        function GotoUrl(url)
+        {
+            window.location.href = url;
+        }
+        
+    </script>
+    <style>
+        .bangdan_title {
+            font-size: 16px;
+            padding: 15px;
+            padding-left:24px;
+        }
+        .cont {
+            font-size:13px;
+            
+            line-height:22px;
+        }
+        
+        .trtop {
+            cursor:pointer;
+        }
+        .cbow {
+            width: 100%;
+            height: 80px;
+            background-color: #010104;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cbow a {
+            vertical-align: top;
+            display: inline-block;
+        }
+        
+    </style>
+<script data-require-id="echarts" src="./中国票房_files/echarts.js" async=""></script><script data-require-id="echarts/chart/pie" src="./中国票房_files/echarts.js" async=""></script></head>
+<body>
+    <div class="cbow"><a href="http://efmt.entgroup.cn/Home" target="_blank"><img src="./中国票房_files/baner.png" width="990" height="80" alt=""></a></div>
+    <div class="cbo_nav">
+        <div class="nav_logo">
+            <img src="./中国票房_files/logo.png" alt="">
+        </div>
+
+        <div class="nav_list">
+            <ul id="topmenu">
+                <li><a id="ahome" href="./中国票房_files/中国票房.html" class="active">首页</a></li>
+                <li><a id="ass" href="http://www.cbooo.cn/realtime">票房</a></li>
+                <li><a id="apaipian" href="http://www.cbooo.cn/paipian">排片</a></li>
+                <li><a id="acu" href="http://www.cbooo.cn/ChinaUSMARKET">中美</a></li>
+                <li><a id="anews" href="http://www.cbooo.cn/newslist">资讯</a></li>
+                <li><a id="ateleplay" href="http://www.cbooo.cn/Teleplay">电视</a></li>
+                <li><a id="amovies" href="http://www.cbooo.cn/movies">影库</a></li>
+            </ul>
+        </div>
+
+        <div class="nav_input">
+            <input id="txtSearch" type="text" name="" value="" placeholder="请输入影片名/影人名称" style="font-family:&#39;Microsoft YaHei&#39;" onkeydown="enterSearch()">
+            <span><img src="./中国票房_files/search.png" alt="" onclick="search()"></span>
+            <a href="javascript:void(0);" class="code-box">
+                <div><img src="./中国票房_files/nav_weixin.png" alt="" style="  vertical-align:middle;"></div>
+                <div class="code-warp">
+                    <p class="tt">关注中国票房网</p>
+                    <p><img src="./中国票房_files/weixin.jpg" alt=""></p>
+                </div>
+            </a>
+            <!-- 二维码下拉框 -->
+        </div>
+    </div>
+    <div class="banner" id="changeImg" style="background-image: url(http://www.cbooo.cn/largerpic/224231.jpg);">
+        <div class="banner_menban">
+            <div class="banner_bjb">
+                <div class="banner_left">
+
+                
+                    <h1 onclick="GotoUrl(&#39;/realtime&#39;)" class="trtop">CBO实时票房榜</h1>
+                    <h6><span id="week">2016-3-20 周日</span>&nbsp;&nbsp;今日大盘 ： 10217.1万    </h6>
+                    <div class="cls"></div>
+                    <div id="top_list">
+                       
+                         
+                            <table class="banner_table">
+                                <thead><tr><th style="width:60px"></th><th style="width:150px">影片名称</th><th style="width:120px">实时票房（万）</th><th style="width:80px">票房占比</th><th style="width:120px">累计票房（万）</th><th style="width:80px">排片占比</th><th style="width:80px">上映天数</th><th style="width:70px;"></th></tr></thead>
+                                <tbody id="topdatatr" class="cinametable">
+                                    <tr style="color: rgb(0, 160, 233);" id="643235" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)">
+                                        <td class="banner_table_red" style="width:60px">1</td>
+                                        <td style="width:150px">疯狂动物城</td>
+                                        <td style="width:120px">4958.6</td>
+                                        <td style="width:80px">48.53%</td>
+                                        <td style="width:120px">108289.6</td>
+                                        <td style="width:80px">31.10%</td>
+                                        
+                                        <td style="width:70px;">17</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="642886" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td class="banner_table_red" style="width:60px">2</td>
+                                        <td style="width:150px">荒野猎人</td>
+                                        <td style="width:120px">3494.0</td>
+                                        <td style="width:80px">34.20%</td>
+                                        <td style="width:120px">18202.7</td>
+                                        <td style="width:80px">30.65%</td>
+                                        
+                                        <td style="width:70px;">3</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="637664" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td class="banner_table_red" style="width:60px">3</td>
+                                        <td style="width:150px">女汉子真爱公式</td>
+                                        <td style="width:120px">573.7</td>
+                                        <td style="width:80px">5.62%</td>
+                                        <td style="width:120px">2767.6</td>
+                                        <td style="width:80px">11.63%</td>
+                                        
+                                        <td style="width:70px;">3</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="643426" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">4</td>
+                                        <td style="width:150px">神战：权力之眼</td>
+                                        <td style="width:120px">412.8</td>
+                                        <td style="width:80px">4.04%</td>
+                                        <td style="width:120px">20871.9</td>
+                                        <td style="width:80px">6.85%</td>
+                                        
+                                        <td style="width:70px;">10</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="610219" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">5</td>
+                                        <td style="width:150px">叶问3</td>
+                                        <td style="width:120px">281.4</td>
+                                        <td style="width:80px">2.75%</td>
+                                        <td style="width:120px">78473.1</td>
+                                        <td style="width:80px">5.16%</td>
+                                        
+                                        <td style="width:70px;">17</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="643570" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">6</td>
+                                        <td style="width:150px">洛杉矶捣蛋计划</td>
+                                        <td style="width:120px">110.9</td>
+                                        <td style="width:80px">1.08%</td>
+                                        <td style="width:120px">571.8</td>
+                                        <td style="width:80px">3.99%</td>
+                                        
+                                        <td style="width:70px;">3</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="626153" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">7</td>
+                                        <td style="width:150px">美人鱼</td>
+                                        <td style="width:120px">106.4</td>
+                                        <td style="width:80px">1.04%</td>
+                                        <td style="width:120px">337965.6</td>
+                                        <td style="width:80px">2.05%</td>
+                                        
+                                        <td style="width:70px;">42</td>
+                                                <td style="color: #888">--</td>
+
+                                    </tr>
+                                    <tr id="327746" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">8</td>
+                                        <td style="width:150px">飞鹰艾迪</td>
+                                        <td style="width:120px">94.4</td>
+                                        <td style="width:80px">0.92%</td>
+                                        <td style="width:120px">263.9</td>
+                                        <td style="width:80px">2.99%</td>
+                                        
+                                        <td style="width:70px;">3</td>
+                                                <td class="banner_table_red"><img src="./中国票房_files/up.png" alt="">1</td>
+
+                                    </tr>
+                                    <tr id="639351" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">9</td>
+                                        <td style="width:150px">功夫熊猫3</td>
+                                        <td style="width:120px">47.7</td>
+                                        <td style="width:80px">0.47%</td>
+                                        <td style="width:120px">99256.3</td>
+                                        <td style="width:80px">0.33%</td>
+                                        
+                                        <td style="width:70px;">52</td>
+                                                <td class="banner_table_lv"><img src="./中国票房_files/down.png" alt="">1</td>
+
+                                    </tr>
+                                    <tr id="642433" onmouseover="ChangeTopR(this.id)" class="trtop" onclick="gotom(this.id)" style="color: rgb(0, 0, 0);">
+                                        <td style="width:60px">10</td>
+                                        <td style="width:150px">太空熊猫英雄归...</td>
+                                        <td style="width:120px">39.1</td>
+                                        <td style="width:80px">0.38%</td>
+                                        <td style="width:120px">84.5</td>
+                                        <td style="width:80px">1.19%</td>
+                                        
+                                        <td style="width:70px;">点映</td>
+                                                <td><img src="./中国票房_files/new.png" alt=""></td>
+
+                                    </tr>
+                                                                         
+                                </tbody>
+                            </table>
+                        
+                    </div>
+                    <p id="uptime">
+                            北京时间 14:20 更新<span> （每30分钟更新一次）<br>注：实时票房包含今天未开映场次已售出的票房）</span>
+
+                    </p>
+                    <a href="http://www.cbooo.cn/realtime">查看详细&gt;&gt; </a>
+                </div>
+                <div id="dvBannerRight" class="banner_right">
+                            <dl id="r_643235" style="display: block;">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/205222.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            1
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">疯狂动物城</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 美国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 108 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 里奇·摩尔/杰拉德·布什/拜恩·霍华德</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 杰拉德·布什/菲尔·约翰斯东/拜恩·霍华德/里奇·摩尔</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 金妮弗·古德温/杰森·贝特曼</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_642886" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/156682.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            2
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">荒野猎人</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 美国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 151 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 亚利桑德罗·冈萨雷斯·伊纳里图</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 亚利桑德罗·冈萨雷斯·伊纳里图/Michael Punke/马克·史密斯</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 莱昂纳多·迪卡普里奥/汤姆·哈迪</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_637664" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/224231.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            3
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">女汉子真爱公式</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 中国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长:  分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 郭大雷</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: </p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 赵丽颖/张翰</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_643426" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/208254.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            4
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">神战：权力之眼</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 美国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 127 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 亚历克斯·普罗亚斯</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: Matt Sazama/Burk Sharpless</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 尼可拉·科斯特-瓦../布兰顿·思怀兹</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_610219" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/164011.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            5
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">叶问3</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 中国/中国香港</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 110 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 叶伟信</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 黄子桓</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 甄子丹/张晋</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_643570" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/643570.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            6
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">洛杉矶捣蛋计划</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 中国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 106 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 郑潇</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 胡杨/郑潇/未名苏苏</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 夏雨/宋祖儿</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_626153" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/209007.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            7
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">美人鱼</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 中国/中国香港</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 93 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 周星驰</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 周星驰/李思臻/何妙祺/曾瑾昌/卢正雨/江玉仪</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 邓超/林允</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_327746" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/79451.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            8
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">飞鹰艾迪</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 英国/美国/德国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 105 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 德克斯特·弗莱彻</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: Simon Kelton/Sean Macauly</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 塔伦·埃格顿/休·杰克曼</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_639351" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/177861.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            9
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">功夫熊猫3</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 中国/美国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 95 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 亚力山德罗·卡罗尼/吕寅荣</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 乔纳森·阿贝尔/格伦·伯格</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: 杰克·布莱克/安吉丽娜·朱莉</p>
+                                </dd>
+                            </dl>
+                            <dl id="r_642433" style="display:none">
+                                <dt>
+                                    <span id="rImg"><img src="./中国票房_files/229451.jpg" width="219" height="329"></span>
+                                    <span class="triangle-topleft">
+                                        <a id="rImgText" style="color:white;font-weight:bold;font-size:24px; top:-80px;display: inline-block;left:20px; -left:-25px; position: absolute; ">
+                                            10
+                                        </a>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <h2 id="rMoviename" style="white-space:nowrap">太空熊猫英雄归来</h2>
+                                    <p id="rCountry" style="white-space:nowrap">制片国家/地区: 中国</p>
+                                    <p id="rRuntime" style="white-space:nowrap">片长: 86 分钟</p>
+                                    <p id="rDaoyan" style="white-space:nowrap">导演: 郑成峰</p>
+                                    <p id="rBianju" style="white-space:nowrap">编剧: 郑成峰/邓磊</p>
+                                    <p id="rYanyuan" style="white-space:nowrap">主演: </p>
+                                </dd>
+                            </dl>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="wrapper_mian">
+            <div class="mian_left">
+                <h1 onclick="GotoUrl(&#39;/paipian&#39;)" class="trtop">今日排片</h1>
+
+                <div id="divScreenCanvas" style="width: 260px; height: 532px; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1458456341026"><div style="position: relative; overflow: hidden; width: 260px; height: 532px;"><div width="260" height="532" data-zr-dom-id="bg" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></div><canvas width="260" height="532" data-zr-dom-id="0" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="1" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="2" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="3" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="4" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="5" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="6" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="7" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="8" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas><canvas width="260" height="532" data-zr-dom-id="hover" id="_zrender_hover_" style="position: absolute; left: 0px; top: 0px; width: 260px; height: 532px;"></canvas></div></div>
+                <span><a class="showInfo" style="bottom:1px;" href="http://www.cbooo.cn/paipian">查看详细&gt;&gt; </a></span>
+            </div>
+            <div class="mian_center mian_left">
+                <h1 onclick="GotoUrl(&#39;/comming&#39;)" class="trtop">即将上映</h1>
+                <span id="releaselist">
+                    
+                   
+    <table>
+            <tbody><tr><td style=" font-weight:bold; color:#000000">上映日期</td><td style="font-weight: bold; color: #000000; ">影片名称</td><td style=" font-weight: bold; color: #000000; ">影片类别</td><td style=" font-weight: bold; color: #000000; ">购票指数</td></tr>
+                <tr id="642530" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="白毛女">白毛女</td>
+                    <td>舞台艺术片</td>
+                    <td>0.43</td>
+                </tr>
+                <tr id="643407" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="半熟少女">半熟少女</td>
+                    <td>爱情</td>
+                    <td>4.08</td>
+                </tr>
+                <tr id="643388" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="蝙蝠侠大战超人：正义黎明">蝙蝠侠大战超人：正...</td>
+                    <td>动作</td>
+                    <td>7.54</td>
+                </tr>
+                <tr id="638604" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="回乡逗儿">回乡逗儿</td>
+                    <td>喜剧</td>
+                    <td>0.92</td>
+                </tr>
+                <tr id="627572" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="假装看不见之分手大师">假装看不见之分手大...</td>
+                    <td>喜剧</td>
+                    <td>2.43</td>
+                </tr>
+                <tr id="642966" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="恐怖将映">恐怖将映</td>
+                    <td>爱情</td>
+                    <td>2.17</td>
+                </tr>
+                <tr id="592975" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="喜乐长安">喜乐长安</td>
+                    <td>爱情</td>
+                    <td>2.06</td>
+                </tr>
+                <tr id="626541" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="一夜危机">一夜危机</td>
+                    <td>爱情</td>
+                    <td>2.16</td>
+                </tr>
+                <tr id="7861" onclick="gotom(this.id)" class="trtop">
+                    <td>03-25</td>
+                    <td title="缘份">缘份</td>
+                    <td>喜剧</td>
+                    <td>4.33</td>
+                </tr>
+                <tr id="631024" onclick="gotom(this.id)" class="trtop">
+                    <td>03-31</td>
+                    <td title="神秘家族">神秘家族</td>
+                    <td>惊悚</td>
+                    <td>1.93</td>
+                </tr>
+                <tr id="617763" onclick="gotom(this.id)" class="trtop">
+                    <td>04-01</td>
+                    <td title="火锅英雄">火锅英雄</td>
+                    <td>喜剧</td>
+                    <td>4.05</td>
+                </tr>
+
+    </tbody></table>
+
+                </span>
+                <span><a class="showInfo" style="bottom:8px;" href="http://www.cbooo.cn/comming">查看详细&gt;&gt; </a></span>
+            </div>
+            <div class="mian_right">
+                <h1 onclick="GotoUrl(&#39;/history&#39;)" class="trtop">推荐榜单</h1>
+                <div style="height:520px;">
+
+                            <h3 class="bangdan_title">
+                                <a href="http://www.cbooo.cn/Alltimedomestic" target="_blank" title="内地总票房排名" style="color: #109bee; font-size: 14px; font-weight: bold;">
+                                    内地总票房排名&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span></span>
+                                </a>
+                            </h3>
+                            <ul class="ul_jjsy">
+                                <li class="noline">
+                                    <div class="img">
+                                        <a style="float:left;" href="http://www.cbooo.cn/m/629625" target="_blank">
+                                            <img style="height:60px;" onerror="this.src=&#39;../../Content/images/nopic.jpg&#39;" alt="速度与激情7" title="速度与激情7" src="./中国票房_files/196613.jpg">
+                                        </a>
+                                        <div style="float:left; margin-left:15px; padding-top:5px;" class="cont">
+                                            <a href="http://www.cbooo.cn/m/629625" target="_blank" title="速度与激情7">速度与激情7</a>
+                                            <p style="text-indent:0;">
+                                                <span>进口片 NO.1</span>  242655万
+                                            </p>
+                                        </div>
+                                        <br style="clear:both;">
+                                    </div>
+                                </li>
+
+                                <li class="noline">
+                                    <div class="img">
+                                        <a style="float:left;" href="http://www.cbooo.cn/m/626153" target="_blank">
+                                            <img style="height:60px;" onerror="this.src=&#39;../../Content/images/nopic.jpg&#39;" alt="美人鱼" title="美人鱼" src="./中国票房_files/209007.jpg">
+                                        </a>
+                                        <div style="float:left; margin-left:15px; padding-top:5px;" class="cont">
+                                            <a href="http://www.cbooo.cn/m/626153" target="_blank" title="美人鱼">美人鱼</a>
+                                            <p style="text-indent:0;">
+                                                <span>国产片 NO.1</span>  337934万
+                                            </p>
+                                        </div>
+                                        <br style="clear:both;">
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <h3 class="bangdan_title">
+                                <a href="http://www.cbooo.cn/topday" target="_blank" title="影片单日票房排名" style="color: #109bee; font-size: 14px; font-weight: bold;">
+                                    影片单日票房排名
+                                    <span></span>
+                                </a>
+                            </h3>
+                            <ul class="ul_jjsy">
+                                <li class="noline">
+                                    <div class="img">
+                                        <a style="float:left;" href="http://www.cbooo.cn/m/5387" target="_blank">
+                                            <img style="height:60px;" onerror="this.src=&#39;../../Content/images/nopic.jpg&#39;" alt="速度与激情7" title="速度与激情7" src="./中国票房_files/196613.jpg">
+                                        </a>
+                                        <div style="float:left; margin-left:15px; padding-top:5px;" class="cont">
+                                            <a href="http://www.cbooo.cn/m/5387" target="_blank" title="速度与激情7">速度与激情7</a>
+                                            <p style="text-indent:0;">
+                                                <span>NO.1</span>   34643万
+                                            </p>
+                                        </div>
+                                        <br style="clear:both;">
+                                    </div>
+                                </li>
+                                <li class="noline">
+                                    <div class="img">
+                                        <a style="float:left;" href="http://www.cbooo.cn/m/9701" target="_blank">
+                                            <img style="height:60px;" onerror="this.src=&#39;../../Content/images/nopic.jpg&#39;" alt="美人鱼" title="美人鱼" src="./中国票房_files/209007.jpg">
+                                        </a>
+                                        <div style="float:left; margin-left:15px; padding-top:5px;" class="cont">
+                                            <a href="http://www.cbooo.cn/m/9701" target="_blank" title="美人鱼">美人鱼</a>
+                                            <p style="text-indent:0;">
+                                                <span>NO.2</span>   31587万
+                                            </p>
+                                        </div>
+                                        <br style="clear:both;">
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <h3 class="bangdan_title">
+                                <a href="http://www.cbooo.cn/overbill" target="_blank" title="最快过亿影片排名" style="color: #109bee; font-size:14px; font-weight:bold;">
+                                    最快过亿影片排名
+                                    <span></span>
+                                </a>
+                            </h3>
+                            <ul class="ul_jjsy">
+                                <li class="noline">
+                                    <div class="img">
+                                        <a style="float:left;" href="http://www.cbooo.cn/m/631343" target="_blank">
+                                            <img style="height:60px;" onerror="this.src=&#39;../../Content/images/nopic.jpg&#39;" alt="万万没想到" title="万万没想到" src="./中国票房_files/222673.jpg">
+                                        </a>
+                                        <div style="float:left; margin-left:15px; padding-top:5px;" class="cont">
+                                            <a href="http://www.cbooo.cn/m/631343" target="_blank" title="万万没想到">万万没想到</a>
+                                            <p style="text-indent:0;">
+                                                <span>NO.1</span>   首映天
+                                            </p>
+                                        </div>
+                                        <br style="clear:both;">
+                                    </div>
+                                </li>
+                            </ul>
+
+                </div>
+                <span><a class="showInfo" href="http://www.cbooo.cn/history">查看详细&gt;&gt;</a></span>
+            </div>
+        </div>
+
+            <div class="footer">
+                <h1 onclick="GotoUrl(&#39;/newslist&#39;)" class="trtop">最新要闻</h1>
+                <dl>
+                    <dt id="n_pic">
+                        <a target="_blank" href="http://www.cbooo.cn/news/30489" title="第10周影院：TOP10影城5家单日单厅收益超平均值">
+                            <img src="./中国票房_files/635938334806630859.jpg" width="398" height="252">
+                        </a>
+                    </dt>
+                    <dd>
+                        <h2 id="titleH2"><a href="http://www.cbooo.cn/news/30489">第10周影院：TOP10影城5家单日单厅收益超平均值</a></h2>
+                        <p id="n_time">2016-03-17</p>
+                        <span id="n_content">
+第10周全国影院总票房为110215万元，总场次为1359214场，总人次为3185.2万人。影院冠军为上海万达影城五角场店，总票房为243.94万元，环比上升49％，平均上座率为...
+                        </span>
+                        <div id="newsmore" class="cbo-new">
+                            
+                                    <p><a href="http://www.cbooo.cn/news/30455" target="_blank">第10周票房：《动物城》大反转制霸，内地影市赶超北美可期</a><em>2016-03-15</em></p>
+                                    <p><a href="http://www.cbooo.cn/news/30437" target="_blank">《疯狂动物城》风头正劲将超10亿加冕新科动画冠军</a><em>2016-03-14</em></p>
+                        </div>
+                    </dd>
+                </dl>
+                <span id="n_url" class="more">
+                    <a href="http://www.cbooo.cn/newslist">查看全部&gt;&gt;</a>
+                </span>
+            </div>
+
+        
+    </div>
+
+    <div class="copyright">
+        <p>Copyright 2014 ChinaBoxOffice 北京 All rights reserved.</p>
+    </div>
+
+    <ul class="cbobar">
+        <li class="codehover">
+            <div id="dQrCode" class="codebar curr" title="二维码">
+                <b class="baron">二维码</b>
+            </div>
+            <div id="dcodebox" class="codebox">
+                <dl>
+                    <dt><img id="imgQrCode" src=""></dt>
+                    <dd><p>扫描二维码</p></dd>
+                </dl>
+            </div>
+        </li>
+        <li>
+            <div class="topbar" title="返回顶部" method="backtop">
+                <a class="baron" href="http://www.cbooo.cn/#top">返回顶部</a>
+            </div>
+        </li>
+    </ul>
+    <div id="divFenx" style="display:none;"></div>
+   
+
+
+</body></html>

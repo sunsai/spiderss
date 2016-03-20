@@ -4,12 +4,14 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/spiders/sipders.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/routes/realtime.js" />
         <item url="file://$PROJECT_DIR$/gulpfile.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/spiders/sipders.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/routes/realtime.js" />
       <root url="file://$PROJECT_DIR$/gulpfile.js" />
     </CLASSES>
     <SOURCES />

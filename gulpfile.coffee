@@ -39,7 +39,7 @@ gulp.task('browsync', ->
   })
 )
 gulp.task('watch', ->
-  gulp.watch(['./routes/**/*.*','./spiders/**/*.js', './views/**/*.ejs', './public/**/*.*'], ['reload'])
+  gulp.watch(['./routes/**/*.*','./spiders/**/*.*', './views/**/*.*', './public/**/*.*'], ['reload'])
 )
 gulp.task('reload', (callback)->
   runsequence(['bsreload'], callback)

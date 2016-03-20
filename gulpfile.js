@@ -55,7 +55,7 @@
   });
 
   gulp.task('watch', function() {
-    return gulp.watch(['./routes/**/*.*', './spiders/**/*.js', './views/**/*.ejs', './public/**/*.*'], ['reload']);
+    return gulp.watch(['./routes/**/*.*', './spiders/**/*.*', './views/**/*.*', './public/**/*.*'], ['reload']);
   });
 
   gulp.task('reload', function(callback) {
