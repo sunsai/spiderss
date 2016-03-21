@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99cca929-ac4d-41ae-8213-1aedd161837b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
+    <list default="true" id="99cca929-ac4d-41ae-8213-1aedd161837b" name="Default" comment="paipian&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/css.css" afterPath="$PROJECT_DIR$/public/css/css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/css.css.map" afterPath="$PROJECT_DIR$/public/css/css.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/css.scss" afterPath="$PROJECT_DIR$/public/css/css.scss" />
     </list>
     <ignored path="sipderss.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -309,7 +304,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458568649622</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="paipian&#10;">
+      <created>1458570650846</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1458570650846</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -317,7 +318,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19898605" sideWeight="0.49507734" order="0" side_tool="false" content_ui="combo" />
@@ -353,7 +354,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="realtime" />
-    <option name="LAST_COMMIT_MESSAGE" value="realtime" />
+    <MESSAGE value="paipian&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="paipian&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
