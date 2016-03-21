@@ -1,14 +1,91 @@
+body {
+  font-family: "Microsoft YaHei UI";
+}
+
 #navbar .navbar-default {
   background-color: #FFFFFF;
   border-color: #FFFFFF;
   height: 60px;
+}
+#navbar .navbar-default ul.nav {
+  padding-left: 40px;
+  list-style: none;
 }
 #navbar .navbar-default ul.nav li a {
   font-family: "Microsoft YaHei UI";
   font-size: 20px;
   color: #000;
   font-weight: 500;
-  padding: 20px 21px;
+  padding: 20px 20px;
+}
+#navbar .navbar-default .form-group {
+  margin: 10px 10px;
+}
+
+#changeImg {
+  background: url("../img/156682.jpg");
+  height: 580px;
+  background-size: cover;
+  color: #030206;
+  margin: 5px auto;
+  vertical-align: middle;
+  text-align: center;
+}
+#changeImg .glass {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 0 30px 0;
+}
+#changeImg .container {
+  background: #ffffff;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+#changeImg .thumbnail {
+  font-family: "Microsoft YaHei UI";
+  display: block;
+  padding: 4px;
+  margin: 25px 10px 10px 10px;
+  line-height: 1;
+  background-color: #fff;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
+  text-align: left;
+}
+#changeImg .thumbnail img {
+  height: 320px;
+  width: 220px;
+  margin: 0px auto;
+}
+#changeImg h1 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h2 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h3 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h4 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h5 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h6 {
+  font-weight: 500;
+  text-align: center;
 }
 
 #contents.row {
@@ -63,6 +140,51 @@
   vertical-align: middle;
   width: 75%;
   height: 80px;
+}
+
+#today .panel-heading a {
+  text-decoration: none;
+}
+#today .panel-heading a p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #129cf0;
+  margin: 0 auto;
+}
+#today .panel-heading a p:hover {
+  font-weight: bolder;
+  color: #109bee;
+}
+#today .panel-body p span {
+  font-weight: bold;
+}
+#today .panel-body p span:first-child {
+  margin-left: 10px;
+  line-height: 20px;
+  color: #129cf0;
+  width: 16px;
+  height: 16px;
+}
+#today .panel-body table tbody tr:hover {
+  color: #129cf0;
+  font-weight: bold;
+}
+
+#history img {
+  width: 48px;
+  height: 64px;
+}
+#history .media-list li a {
+  text-decoration: none;
+  font-weight: 500;
+}
+#history .media-list li span {
+  border: 1px solid #129CF0;
+  width: 20px;
+  height: 20px;
+  background: #129CF0;
+  color: #FFFFFF;
+  padding: 0px 2px;
 }
 
 #footer {

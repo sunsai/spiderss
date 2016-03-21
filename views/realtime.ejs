@@ -1,13 +1,167 @@
 <% include header %>
-<h1>the is realtime page!!</h1>
-<h1>title:<%= title %></h1>
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <p>this footer</p>
+<div class="banner" id="changeImg">
+  <div class="glass">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <h3>CBO实时票房榜</h3>
+          <h4>
+            <span id="week">2016-3-21 周一</span>
+            &nbsp;&nbsp;今日大盘 ： 1965.0万
+          </h4>
+          <table class="table table-hover table-tsriped table-responsive">
+            <thead>
+            <tr>
+              <th></th>
+              <th>影片名称</th>
+              <th>实时票房（万）</th>
+              <th>票房占比</th>
+              <th>累计票房（万）</th>
+              <th>排片占比</th>
+              <th>上映天数</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 1;i < 11;i++){ %>
+            <tr>
+              <td><%= i %></td>
+              <td>女汉子真爱公式</td>
+              <td>152.8</td>
+              <td>7.78%</td>
+              <td>3367.6</td>
+              <td>2.59%</td>
+              <td>4</td>
+              <td>--</td>
+            </tr>
+            <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="img/156682.jpg" alt="pic">
+            <div class="caption">
+              <p><strong>女汉子真爱公式</strong></p>
+              <p>制片国家/地区: 中国</p>
+              <p>片长: 分钟</p>
+              <p>导演: 郭大雷</p>
+              <p>编剧: </p>
+              <p>主演: 赵丽颖/张翰</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</footer>
+</div>
+<div id="today">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="/paipian">
+              <p>今日排片</p>
+            </a>
+          </div>
+          <div class="panel-body">
+            <canvas id="tdchart">
+
+            </canvas>
+            <% for(var i = 0;i < 10;i++){ %>
+            <p>
+              <span>
+                <span class="glyphicon glyphicon-cd"></span>
+              </span>
+              &nbsp;&nbsp;&nbsp;荒野猎人
+              <span><%= 30 %></span>
+            </p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="/coming">
+              <p>即将上映</p>
+            </a>
+          </div>
+          <div class="panel-body">
+            <table id="comming" class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th>上映日期</th>
+                <th>影片名称</th>
+                <th>影片类别</th>
+                <th>购票指数</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% for(var i = 0;i < 10;i++){ %>
+              <tr>
+                <td>03-25</td>
+                <td title="白毛女">白毛女</td>
+                <td>舞台艺术片</td>
+                <td>0.42</td>
+              </tr>
+              <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div id="history" class="panel panel-default">
+          <div class="panel-heading">
+            <a href="/history">
+              <p>推荐榜单</p>
+            </a>
+          </div>
+          <div class="panel-body">
+
+            <ul class="media-list">
+              <li class="media">
+                <a href="#">内地总票房排名</a>
+                <span class=" pull-right glyphicon glyphicon-play"></span>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img src="img/156682.jpg" alt="media">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <div class="media-heading">
+                    <h4>速度与激情7</h4>
+                  </div>
+                  <p>
+                    进口片 NO.1 242655万
+                  </p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img src="img/156682.jpg" alt="media">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <div class="media-heading">
+                    <h5>速度与激情7</h5>
+                  </div>
+                  <p>
+                    进口片 NO.1 242655万
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <% include footer %>
