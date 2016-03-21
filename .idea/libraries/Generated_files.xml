@@ -22,12 +22,19 @@
         <item url="file://$PROJECT_DIR$/routes/realtime.js" />
         <item url="file://$PROJECT_DIR$/node_modules/resolve/test/resolver/mug.js" />
         <item url="file://$PROJECT_DIR$/node_modules/ipaddr.js/test/ipaddr.test.js" />
+        <item url="file://$PROJECT_DIR$/routes/paipian.js" />
         <item url="file://$PROJECT_DIR$/node_modules/glob-watcher/test/fixtures/test.js" />
         <item url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/cli.js" />
         <item url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/service/WeinreClientCommands.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/spiders/sipders.js" />
+      <root url="file://$PROJECT_DIR$/routes/realtime.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/resolve/test/resolver/mug.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/cli.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/service/WeinreClientCommands.js" />
       <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/messageHandler.js" />
       <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/service/WeinreTargetCommands.js" />
       <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/channelManager.js" />
@@ -41,16 +48,11 @@
       <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/extensionManager.js" />
       <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/HttpChannelHandler.js" />
       <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/serviceManager.js" />
-      <root url="file://$PROJECT_DIR$/routes/index.js" />
       <root url="file://$PROJECT_DIR$/node_modules/gulp-nodemon/test/server.js" />
-      <root url="file://$PROJECT_DIR$/spiders/sipders.js" />
       <root url="file://$PROJECT_DIR$/gulpfile.js" />
-      <root url="file://$PROJECT_DIR$/routes/realtime.js" />
-      <root url="file://$PROJECT_DIR$/node_modules/resolve/test/resolver/mug.js" />
       <root url="file://$PROJECT_DIR$/node_modules/ipaddr.js/test/ipaddr.test.js" />
+      <root url="file://$PROJECT_DIR$/routes/paipian.js" />
       <root url="file://$PROJECT_DIR$/node_modules/glob-watcher/test/fixtures/test.js" />
-      <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/cli.js" />
-      <root url="file://$PROJECT_DIR$/node_modules/weinre/lib-src/service/WeinreClientCommands.js" />
     </CLASSES>
     <SOURCES />
   </library>
