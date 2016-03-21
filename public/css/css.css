@@ -2,6 +2,17 @@ body {
   font-family: "Microsoft YaHei UI";
 }
 
+.panel-heading p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #129cf0;
+  margin: 0 auto;
+}
+.panel-heading p:hover {
+  font-weight: bolder;
+  color: #109bee;
+}
+
 #navbar .navbar-default {
   background-color: #FFFFFF;
   border-color: #FFFFFF;
@@ -142,18 +153,15 @@ body {
   height: 80px;
 }
 
-#today .panel-heading a {
+#today .panel-default {
+  border-color: #ddd;
+  height: 600px;
+}
+#today a {
+  font-family: "Microsoft YaHei UI";
   text-decoration: none;
-}
-#today .panel-heading a p {
-  font-size: 18px;
-  font-weight: bold;
+  font-weight: 400;
   color: #129cf0;
-  margin: 0 auto;
-}
-#today .panel-heading a p:hover {
-  font-weight: bolder;
-  color: #109bee;
 }
 #today .panel-body p span {
   font-weight: bold;
@@ -170,21 +178,66 @@ body {
   font-weight: bold;
 }
 
+#comming-comtainer .panel-body a {
+  font-family: "Microsoft YaHei UI";
+  text-decoration: none;
+  font-weight: 400;
+  color: #129cf0;
+}
+#comming-comtainer table tr {
+  height: 43px;
+}
+
 #history img {
   width: 48px;
   height: 64px;
 }
+#history .media-list li {
+  font-family: "Microsoft YaHei UI";
+}
 #history .media-list li a {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
+  color: #129cf0;
 }
 #history .media-list li span {
-  border: 1px solid #129CF0;
+  border: 1px solid #129cf0;
   width: 20px;
   height: 20px;
-  background: #129CF0;
+  background: #129cf0;
   color: #FFFFFF;
   padding: 0px 2px;
+}
+#history .media-list li h5 {
+  font-weight: 500;
+}
+#history .media-list li p {
+  font-weight: 400;
+}
+
+#news {
+  font-family: "Microsoft YaHei UI";
+}
+#news h3 {
+  font-size: 24px;
+  margin: 20px 0 10px 0;
+}
+#news p {
+  line-height: 30px;
+  padding-left: 25px;
+}
+#news ul li {
+  line-height: 40px;
+}
+#news ul li a {
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
+}
+#news a {
+  text-decoration: none;
+  font-weight: 400;
+  color: #129cf0;
 }
 
 #footer {
