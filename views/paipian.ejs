@@ -1,5 +1,5 @@
 <% include header %>
-<div class="container">
+<div id="paipian" class="container">
   <div class="row">
     <div class="col-md-3">
       <div class="list-group">
@@ -15,8 +15,69 @@
         <li><a href="#">二线城市</a></li>
         <li><a href="#">三线城市</a></li>
       </ul>
-      <hr id="hr">
+      <div id="future">
+        <a lass="active" href="#">
+          <span>今天</span>
+        </a>
+        <a c href="#">
+          <span>明天</span>
+        </a>
+        <a href="#">
+          <span>后天</span>
+        </a>
+      </div>
+      <canvas id="ppcount" class="form-control"></canvas>
+      <table  class="table table-hover table-striped form-control">
+        <thead>
+        <tr>
+          <td></td>
+          <td>总场次</td>
+          <td>荒野猎人</td>
+          <td>疯狂动物城</td>
+          <td>女汉子真爱公式</td>
+          <td>神战：权力之眼</td>
+          <td>叶问3</td>
+          <td>洛杉矶捣蛋计划</td>
+          <td>飞鹰艾迪</td>
+          <td>美人鱼</td>
+          <td>恐怖禁忌之红旗袍</td>
+          <td>床下有人</td>
+        </tr>
+        </thead>
+        <tbody>
+        <%for(var i=0;i<12;i++){%>
+        <tr>
+          <td>认知指数</td>
+          <td>----</td>
+          <td>8.28</td>
+          <td>8.15</td>
+          <td>6.63</td>
+          <td>5.34</td>
+          <td>6.67</td>
+          <td>3.92</td>
+          <td>3.93</td>
+          <td>7.23</td>
+          <td>0.43</td>
+          <td>2.44</td>
+        </tr>
+        <%}%>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-<% include footer %>
+<!--<script src="components/jquery/dist/jquery.js"></script>-->
+<script>
+  $(document).ready(function () {
+    $('#paipian ul.nav li').click(function () {
+      $('#paipian ul.nav li').removeClass('active');
+      $('#future a').removeClass('active');
+      $('#future a:first').addClass('active');
+      $(this).addClass('active');
+    });
+    $('#future a').click(function () {
+      $('#future a').removeClass('active');
+      $(this).addClass('active');
+    })
+  })
+</script>

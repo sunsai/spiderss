@@ -247,6 +247,41 @@ body {
   border-top: 4px solid #eee;
 }
 
+#paipian {
+  font-family: "Microsoft YaHei UI";
+}
+#paipian ul.nav li a {
+  color: #636161;
+}
+#paipian #future {
+  border-top: 3px solid #CCCCCC;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 0;
+}
+#paipian #future a {
+  color: #636161;
+  text-decoration: none;
+}
+#paipian #future a.active {
+  background-color: #109bee;
+}
+#paipian #future a span {
+  margin: 0px 25px;
+}
+#paipian .nav-pills > li.active > a {
+  color: #fff;
+  background-color: #00A0E9;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+#paipian #ppcount {
+  border: 1px solid #ececfb;
+  height: 400px;
+  margin-bottom: 10px;
+}
+
 #footer {
   background: rgba(248, 248, 248, 0.8);
   background: #d7f8c7;

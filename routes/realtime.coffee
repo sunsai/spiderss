@@ -1,10 +1,9 @@
 express = require('express');
 router = express.Router();
-
-#/* GET users listing. */
+realt = require('../spiders/real')
 router.get('/', (req, res)->
-  res.render('realtime',{title:'test22444'})
-#  res.send('respond with a resource from the page realtime')
+  rt = new realt('http://www.cbooo.cn/')
+  rt.getData(res)
 )
 
 module.exports = router;

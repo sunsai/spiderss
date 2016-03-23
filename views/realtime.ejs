@@ -24,16 +24,22 @@
             </tr>
             </thead>
             <tbody>
-            <% for(var i = 1;i < 11;i++){ %>
+            <% for(var i = 0;i < fms.length;i++){ %>
             <tr>
-              <td><%= i %></td>
-              <td>女汉子真爱公式</td>
-              <td>152.8</td>
-              <td>7.78%</td>
-              <td>3367.6</td>
-              <td>2.59%</td>
-              <td>4</td>
-              <td>--</td>
+              <td><%= fms[i].order %></td>
+              <td><%= fms[i].name %></td>
+              <td><%= fms[i].ptime %></td>
+              <td><%= fms[i].rate %></td>
+              <td><%= fms[i].pall %></td>
+              <td><%= fms[i].prate %></td>
+              <td><%= fms[i].days %></td>
+              <td>
+                <% if(fms[i].img != ''){ %>
+                <img src="<%= fms[i].img.isup %>" alt="">
+                <%= fms[i].img.grade %>
+                <% } %>
+                --
+              </td>
             </tr>
             <% } %>
             </tbody>
