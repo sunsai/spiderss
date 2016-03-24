@@ -5,5 +5,8 @@
     "**/.*",
     "node_modules",
     "components"
-  ]
+  ],
+  "dependencies": {
+    "Chart.js": "chartjs#^1.0.2"
+  }
 }

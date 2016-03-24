@@ -36,8 +36,9 @@ body {
 }
 
 #changeImg {
+  font-family: "Microsoft YaHei UI";
   background: url("../img/156682.jpg");
-  height: 580px;
+  height: 600px;
   background-size: cover;
   color: #030206;
   margin: 5px auto;
@@ -57,7 +58,6 @@ body {
     border-radius: 4px;
   }
   .thumbnail {
-    font-family: "Microsoft YaHei UI";
     display: block;
     padding: 4px;
     margin: 25px 10px 10px 10px;
@@ -79,6 +79,41 @@ body {
     h#{$i} {
       font-weight: 500;
       text-align: center;
+    }
+  }
+  h3{
+    color: #129cf0;
+  }
+  h4{
+    span#day{
+      color: #f68b3d;
+    }
+  }
+  .rimg-list {
+    display: none;
+    p {
+      white-space: nowrap;
+    }
+  }
+  .table > tbody > tr:hover {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    color: #129cf0;
+  }
+  #uptime {
+    text-align: left;
+    div {
+      margin: -10px 0 5px 0;
+      color: #141313;
+      span {
+        color: #129cf0;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #129cf0;
     }
   }
 }
@@ -149,9 +184,9 @@ body {
     font-weight: 400;
     color: #129cf0;
   }
-
   .panel-body {
     p {
+      margin: 5px 0;
       span {
         font-weight: bold;
         &:first-child {
@@ -163,9 +198,21 @@ body {
         }
       }
     }
+    #tdchart{
+      width: 261px;
+      height: 261px;
+      margin-left: -16px;
+    }
     table tbody tr:hover {
       color: #129cf0;
       font-weight: bold;
+    }
+  }
+  @for $i from 1 through 12{
+    .col-md-#{$i}{
+      position: relative;
+      min-height: 1px;
+      padding:0 5px;
     }
   }
 }
@@ -254,10 +301,10 @@ body {
 #paipian {
   font-family: "Microsoft YaHei UI";
 
-  ul{
-    &.nav{
-      li{
-        a{
+  ul {
+    &.nav {
+      li {
+        a {
           color: #636161;
         }
       }
@@ -286,8 +333,8 @@ body {
     -moz-border-radius: 0px;
     border-radius: 0px;
   }
-  #ppcount{
-    border:1px solid #ececfb;
+  #ppcount {
+    border: 1px solid #ececfb;
     //width: 600px;
     height: 400px;
     margin-bottom: 10px;

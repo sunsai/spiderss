@@ -7,8 +7,8 @@
         <div class="col-md-8">
           <h3>CBO实时票房榜</h3>
           <h4>
-            <span id="week">2016-3-21 周一</span>
-            &nbsp;&nbsp;今日大盘 ： 1965.0万
+            <span id="week"><%= all[0].titles.day %>  <%= all[0].titles.week %></span>
+            <span id="day">&nbsp;&nbsp;今日大盘 ： 1965.0万<%= all[0].titles.total %></span>
           </h4>
           <table class="table table-hover table-tsriped table-responsive">
             <thead>
@@ -24,39 +24,51 @@
             </tr>
             </thead>
             <tbody>
-            <% for(var i = 0;i < fms.length;i++){ %>
-            <tr>
-              <td><%= fms[i].order %></td>
-              <td><%= fms[i].name %></td>
-              <td><%= fms[i].ptime %></td>
-              <td><%= fms[i].rate %></td>
-              <td><%= fms[i].pall %></td>
-              <td><%= fms[i].prate %></td>
-              <td><%= fms[i].days %></td>
+            <% for(var i = 0;i < all[0].films.length;i++){ %>
+            <tr id="r_<%= all[0].films[i].id %>">
+              <td><%= all[0].films[i].order %></td>
+              <td><%= all[0].films[i].name %></td>
+              <td><%= all[0].films[i].ptime %></td>
+              <td><%= all[0].films[i].rate %></td>
+              <td><%= all[0].films[i].pall %></td>
+              <td><%= all[0].films[i].prate %></td>
+              <td><%= all[0].films[i].days %></td>
               <td>
-                <% if(fms[i].img != ''){ %>
-                <img src="<%= fms[i].img.isup %>" alt="">
-                <%= fms[i].img.grade %>
+                <% if(all[0].films[i].img.isup != ''){ %>
+                <img src="<%= all[0].films[i].img.isup %>" alt="img">
                 <% } %>
-                --
+                <%= all[0].films[i].img.grade %>
               </td>
             </tr>
             <% } %>
             </tbody>
           </table>
+          <div id="uptime">
+            <div class="pull-left">
+              <span>北京时间 9:50 更新</span>
+              （每30分钟更新一次）
+              <br>
+              注：实时票房包含今天未开映场次已售出的票房）
+            </div>
+            <a class="pull-right" href="#">查看详细&raquo;</a>
+          </div>
         </div>
         <div class="col-md-3">
-          <div class="thumbnail">
-            <img src="img/156682.jpg" alt="pic">
-            <div class="caption">
-              <p><strong>女汉子真爱公式</strong></p>
-              <p>制片国家/地区: 中国</p>
-              <p>片长: 分钟</p>
-              <p>导演: 郭大雷</p>
-              <p>编剧: </p>
-              <p>主演: 赵丽颖/张翰</p>
+          <% for(var i = 0;i < all[0].imgs.length;i++){ %>
+          <div id="rimg_<%= all[0].imgs[i].id %>" class="rimg-list">
+            <div class="thumbnail">
+              <img src="<%= all[0].imgs[i].img %>" alt="pic">
+              <div class="caption">
+                <p><strong><%= all[0].imgs[i].rMoviename %></strong></p>
+                <p><%= all[0].imgs[i].rCountry %></p>
+                <p><%= all[0].imgs[i].rRuntime %></p>
+                <p><%= all[0].imgs[i].rDaoyan %></p>
+                <p><%= all[0].imgs[i].rBianju %></p>
+                <p><%= all[0].imgs[i].rYanyuan %></p>
+              </div>
             </div>
           </div>
+          <% } %>
         </div>
       </div>
     </div>
@@ -72,19 +84,20 @@
               <p>今日排片</p>
             </a>
           </div>
+          <p><%= all[0].titles.day %></p>
           <div class="panel-body">
-            <canvas id="tdchart">
+            <canvas id="tdchart" width="260" height="260" style="width: 260px;height: 260px">
 
             </canvas>
-            <% for(var i = 0;i < 10;i++){ %>
+            <% all[0].films.forEach(function (data) { %>
             <p>
               <span>
                 <span class="glyphicon glyphicon-cd"></span>
               </span>
-              &nbsp;&nbsp;&nbsp;荒野猎人
-              <span><%= 30 %></span>
+              &nbsp;&nbsp;&nbsp;<%= data.name %>
+              <span><%= data.prate %></span>
             </p>
-            <% } %>
+            <% }) %>
             <a class="pull-right" href="#">查看详细&raquo;</a>
           </div>
         </div>
@@ -107,14 +120,14 @@
               </tr>
               </thead>
               <tbody>
-              <% for(var i = 0;i < 10;i++){ %>
+              <% all[0].releases.forEach(function (data) { %>
               <tr>
-                <td>03-25</td>
-                <td title="白毛女">白毛女</td>
-                <td>舞台艺术片</td>
-                <td>0.42</td>
+                <td><%= data.date %></td>
+                <td title="<%= data.name %>"><%= data.name %></td>
+                <td><%= data.type %></td>
+                <td><%= data.index %></td>
               </tr>
-              <% } %>
+              <% }) %>
               </tbody>
             </table>
             <a class="pull-right" href="#">查看详细&raquo;</a>
@@ -264,4 +277,27 @@
     </div>
   </div>
 </div>
+<script src="components/Chart.js/Chart.js"></script>
+<script src="js/data.js"></script>
+<script>
+  $(document).ready(function () {
+    $('div.rimg-list:first').css({'display': 'block'});
+    $('#changeImg table tbody tr').hover(function (data) {
+      var imgId = $(this).attr('id').replace('r_', 'rimg_');
+      $('div.rimg-list').css({'display': 'none'});
+      $('#' + imgId).css({'display': 'block'});
+    });
+    var charData = '';
+    $.ajax({
+      url: '/api',
+      dataType: 'json',
+      success: function (d) {
+        var ctx = $('#tdchart').get(0).getContext("2d");
+        new Chart(ctx).Doughnut(d[0].data, {responsive: true});
+      }
+    })
+
+  })
+</script>
+
 <% include footer %>

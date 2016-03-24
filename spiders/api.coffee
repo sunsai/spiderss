@@ -1,7 +1,6 @@
 superagent = require('superagent')
 cheerio = require('cheerio')
 Date = require('./Date')
-doughnutData = require('../public/js/data')
 #/* GET home page. */
 
 real = (url)->
@@ -39,53 +38,49 @@ real.prototype = {
             }
           })
           pchart.push({
-              value: $(this).find('td:nth-child(6)').text(),
+              value: $(this).find('td:nth-child(6)').text().replace('%', ''),
               color: '#' + Math.floor(Math.random() * 16777215).toString(16)
               label: $(this).find('td:nth-child(2)').text()
             }
           )
         )
         $('#dvBannerRight dl').each(->
-          imgs.push({
-              id: $(this).attr('id').trim().substring(2)
-              img: $(this).find('dt span img').attr('src').trim()
-              order: $(this).find('#rImgText').text().trim()
-              rMoviename: $(this).find('#rMoviename').text().trim()
-              rCountry: $(this).find('#rCountry').text().trim()
-              rRuntime: $(this).find('#rDaoyan').text().trim()
-              rBianju: $(this).find('#rRuntime').text().trim()
-              rDaoyan: $(this).find('#rBianju').text().trim()
-              rYanyuan: $(this).find('#rYanyuan').text().trim()
-            }
+          imgs.push ({
+            id: $(this).attr('id').trim().substring(2)
+            img: $(this).find('dt span img').attr('src').trim()
+            order: $(this).find('dt span #rImgText').text().trim()
+            rMoviename: $(this).find('#rMoviename').text().trim()
+            rCountry: $(this).find('#rCountry').text().trim()
+            rRuntime: $(this).find('#rRuntime').text().trim()
+            rDaoyan: $(this).find('#rDaoyan').text().trim()
+            rBianju: $(this).find('#rBianju').text().trim()
+            rYanyuan: $(this).find('#rYanyuan').text().trim()
+          }
           )
         )
-      $('#releaselist table tr').each(->
-        releaselist.push ({
-          id: $(this).attr('id')
-          date: $(this).find('td:nth-child(1)').text().trim()
-          name: $(this).find('td:nth-child(2)').text().trim()
-          type: $(this).find('td:nth-child(3)').text().trim()
-          index: $(this).find('td:nth-child(4)').text().trim()
-        }
+        $('#releaselist table tr').each(->
+          releaselist.push ({
+            id: $(this).attr('id')
+            date: $(this).find('td:nth-child(1)').text().trim()
+            name: $(this).find('td:nth-child(2)').text().trim()
+            type: $(this).find('td:nth-child(3)').text().trim()
+            index: $(this).find('td:nth-child(4)').text().trim()
+          }
+          )
         )
-      )
-      d = new Date()
-      all.push(
-        titles: {
-          day: d.Format('yyyy-mm-dd')
-          week: d.Week()
-          total: $('#week').parent().text().trim()
-        }
-        films: films
-        pdata: pchart
-        imgs: imgs
-      )
-      response.render('realtime', {
-        title: 'xepress'
-        all: all
-        pdatas: pchart
-        releases: releaselist
-      })
+        d = new Date()
+        all.push(
+          titles: {
+            day: d.Format('yyyy-mm-dd')
+            week: d.Week()
+            total: $('#week').parent().text().trim()
+          }
+          films: films
+          data: pchart
+          imgs: imgs
+          releases: releaselist
+        )
+        response.send(all)
     )
 }
 module.exports = real;
