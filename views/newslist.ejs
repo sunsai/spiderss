@@ -26,15 +26,18 @@
         </div>
         <nav>
           <ul class="pagination">
-            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <% for(var i = 2;i <= newslist.tolPage;i++){ %>
-            <li><a href="/newslist/<%= i %>"><%= i %> </a></li>
+            <li class="<%= curPage == 1 ? 'disabled' : '' %>"><a href="#" aria-label="Previous"><span
+                  aria-hidden="true">&laquo;</span></a></li>
+            <% for(var i = 1;i <= newslist.tolPage;i++){ %>
+            <li class="<%= curPage == i ? 'active' : '' %>"><a href="/newslist/<%= i %>"><%= i %> </a></li>
             <% } %>
-            <li><a href="#"><span aria-hidden="true">&raquo;</span></a></li>
+            <li class="<%= curPage == newslist.tolPage ? 'disabled' : '' %>"><a
+                href="/newslist/<%= curPage < newslist.tolPage ? parseInt(curPage) + 1 : '' %>"><span
+                  aria-hidden="true">&raquo;</span></a></li>
           </ul>
         </nav>
       </div>
     </div>
   </div>
 </div>
+<% include footer %>
