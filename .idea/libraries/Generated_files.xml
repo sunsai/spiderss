@@ -2,7 +2,9 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/routes/newslist.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/spiders/newslist.js" />
         <item url="file://$PROJECT_DIR$/spiders/real.js" />
         <item url="file://$PROJECT_DIR$/spiders/Date.js" />
         <item url="file://$PROJECT_DIR$/routes/realtime.js" />
@@ -12,7 +14,9 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/routes/newslist.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/spiders/newslist.js" />
       <root url="file://$PROJECT_DIR$/spiders/real.js" />
       <root url="file://$PROJECT_DIR$/spiders/Date.js" />
       <root url="file://$PROJECT_DIR$/routes/realtime.js" />

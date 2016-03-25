@@ -81,11 +81,11 @@ body {
       text-align: center;
     }
   }
-  h3{
+  h3 {
     color: #129cf0;
   }
-  h4{
-    span#day{
+  h4 {
+    span#day {
       color: #f68b3d;
     }
   }
@@ -176,13 +176,20 @@ body {
 #today {
   .panel-default {
     border-color: #ddd;
-    height: 600px;
+    height: 605px;
   }
   a {
     font-family: "Microsoft YaHei UI";
     text-decoration: none;
     font-weight: 400;
     color: #129cf0;
+  }
+  @for $i from 1 through 6 {
+    h#{$i} {
+      text-align: center;
+      font-family: "Microsoft YaHei UI";
+      color: #515151;
+    }
   }
   .panel-body {
     p {
@@ -198,21 +205,24 @@ body {
         }
       }
     }
-    #tdchart{
-      width: 261px;
-      height: 261px;
-      margin-left: -16px;
+    #canvas-container {
+      width: 250px;
+      height: 250px;
+      text-align: center;
+      margin-left: -5px;
     }
-    table tbody tr:hover {
-      color: #129cf0;
-      font-weight: bold;
+    table tbody tr {
+      &:hover {
+        color: #129cf0;
+        font-weight: bold;
+      }
     }
   }
-  @for $i from 1 through 12{
-    .col-md-#{$i}{
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
       position: relative;
       min-height: 1px;
-      padding:0 5px;
+      padding: 0 5px;
     }
   }
 }
@@ -227,17 +237,17 @@ body {
     }
   }
   table tr {
-    height: 43px;
+    height: 40px;
   }
 }
 
 #history {
-
   img {
     width: 48px;
     height: 64px;
   }
   .media-list {
+    margin: 10px auto;
     li {
       font-family: "Microsoft YaHei UI";
       a {
@@ -269,6 +279,7 @@ body {
   h3 {
     font-size: 24px;
     margin: 10px 0;
+    color: #000;
   }
   p {
     line-height: 30px;
@@ -300,7 +311,6 @@ body {
 
 #paipian {
   font-family: "Microsoft YaHei UI";
-
   ul {
     &.nav {
       li {
@@ -343,12 +353,62 @@ body {
 
 #footer {
   background: rgba(248, 248, 248, 0.8);
-  background: #d7f8c7;
+  //background: #d7f8c7;
+  border-top: 3px solid #d7f8c7;
   height: 75px;
   text-align: center;
   /*padding: 10px 0;*/
   padding-top: 15px;
   padding-bottom: 15px;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+#news-container {
+  table {
+    tr {
+      border: 0 solid #ffffff;
+      vertical-align: inherit;
+      border-color: inherit;
+    }
+  }
+  font-family: "Microsoft YaHei UI";
+  .nav-pills {
+    li {
+      width: 120px;
+      height: 50px;
+      border-radius: 0;
+      text-align: center;
+      a {
+        color: #fff;
+        background-color: #00A0E9;
+      }
+    }
+  }
+  .list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #00A0E9;
+    border-color: #00A0E9;
+  }
+  table {
+    font-size: 16px;
+    color: #000;
+    //font-weight: 400;
+    tr {
+      height: 45px;
+      td {
+        border: 0;
+        background: url('../img/linea.gif') no-repeat 100px -75px;
+        a {
+          color: #000;
+        }
+        span {
+          &:nth-child(2) {
+            margin-left: 50px;
+          }
+        }
+      }
+    }
+  }
 }
 

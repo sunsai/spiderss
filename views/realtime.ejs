@@ -8,7 +8,7 @@
           <h3>CBO实时票房榜</h3>
           <h4>
             <span id="week"><%= all[0].titles.day %>  <%= all[0].titles.week %></span>
-            <span id="day">&nbsp;&nbsp;今日大盘 ： 1965.0万<%= all[0].titles.total %></span>
+            <span id="day">&nbsp;&nbsp;<%= all[0].titles.total %></span>
           </h4>
           <table class="table table-hover table-tsriped table-responsive">
             <thead>
@@ -84,11 +84,12 @@
               <p>今日排片</p>
             </a>
           </div>
-          <p><%= all[0].titles.day %></p>
+          <h4><%= all[0].titles.day %>全国拍片统计</h4>
           <div class="panel-body">
-            <canvas id="tdchart" width="260" height="260" style="width: 260px;height: 260px">
-
-            </canvas>
+            <div id="canvas-container" style="width: 200px;height: 200px;margin: -15px 5px 5px 30px">
+              <canvas id="tdchart" width="200" height="200">
+              </canvas>
+            </div>
             <% all[0].films.forEach(function (data) { %>
             <p>
               <span>
@@ -120,14 +121,14 @@
               </tr>
               </thead>
               <tbody>
-              <% all[0].releases.forEach(function (data) { %>
+              <% for(var i = 1;i < all[0].releases.length;i++){ %>
               <tr>
-                <td><%= data.date %></td>
-                <td title="<%= data.name %>"><%= data.name %></td>
-                <td><%= data.type %></td>
-                <td><%= data.index %></td>
+                <td><%= all[0].releases[i].date %></td>
+                <td title="<%= all[0].releases[i].name %>"><%= all[0].releases[i].name %></td>
+                <td><%= all[0].releases[i].type %></td>
+                <td><%= all[0].releases[i].index %></td>
               </tr>
-              <% }) %>
+              <% } %>
               </tbody>
             </table>
             <a class="pull-right" href="#">查看详细&raquo;</a>
@@ -147,97 +148,72 @@
                 <a href="#">内地总票房排名</a>
                 <span class=" pull-right glyphicon glyphicon-play"></span>
               </li>
+              <% all[0].bangdan[0].aTop.forEach(function (d) { %>
               <li class="media">
                 <div class="media-left">
-                  <a href="#">
-                    <img src="img/156682.jpg" alt="media">
+                  <a href="<%= d.href %>">
+                    <img src="<%= d.img %>" alt="<%= d.title %>">
                   </a>
                 </div>
                 <div class="media-body">
                   <div class="media-heading">
-                    <h5>速度与激情7</h5>
+                    <p><%= d.title %></p>
+                    <p>
+                      <%= d.content %>
+                    </p>
                   </div>
-                  <p>
-                    进口片 NO.1 242655万
-                  </p>
+
                 </div>
               </li>
-              <li class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img src="img/156682.jpg" alt="media">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <div class="media-heading">
-                    <h5>速度与激情7</h5>
-                  </div>
-                  <p>
-                    进口片 NO.1 242655万
-                  </p>
-                </div>
-              </li>
+              <% }) %>
             </ul>
             <ul class="media-list">
               <li class="media">
                 <a href="#">内地总票房排名</a>
                 <span class=" pull-right glyphicon glyphicon-play"></span>
               </li>
+              <% all[0].bangdan[0].dTop.forEach(function (d) { %>
               <li class="media">
                 <div class="media-left">
-                  <a href="#">
-                    <img src="img/156682.jpg" alt="media">
+                  <a href="<%= d.href %>">
+                    <img src="<%= d.img %>" alt="<%= d.title %>">
                   </a>
                 </div>
                 <div class="media-body">
                   <div class="media-heading">
-                    <h5>速度与激情7</h5>
+                    <p><%= d.title %></p>
+                    <p>
+                      <%= d.content %>
+                    </p>
                   </div>
-                  <p>
-                    进口片 NO.1 242655万
-                  </p>
                 </div>
               </li>
-              <li class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img src="img/156682.jpg" alt="media">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <div class="media-heading">
-                    <h5>速度与激情7</h5>
-                  </div>
-                  <p>
-                    进口片 NO.1 242655万
-                  </p>
-                </div>
-              </li>
+              <% }) %>
             </ul>
             <ul class="media-list">
               <li class="media">
                 <a href="#">内地总票房排名</a>
                 <span class=" pull-right glyphicon glyphicon-play"></span>
               </li>
+              <% all[0].bangdan[0].bTop.forEach(function (d) { %>
               <li class="media">
                 <div class="media-left">
-                  <a href="#">
-                    <img src="img/156682.jpg" alt="media">
+                  <a href="<%= d.href %>">
+                    <img src="<%= d.img %>" alt="<%= d.title %>">
                   </a>
                 </div>
                 <div class="media-body">
                   <div class="media-heading">
-                    <h5>速度与激情7</h5>
+                    <p><%= d.title %></p>
+                    <p>
+                      <%= d.content %>
+                    </p>
                   </div>
-                  <p>
-                    进口片 NO.1 242655万
-                  </p>
                 </div>
               </li>
-              <li class="media">
-                <a href="#" class="pull-right">查看详细&raquo;</a>
-              </li>
+              <% }) %>
             </ul>
+            <a class="pull-right" href="#">查看详细&raquo;</a>
           </div>
         </div>
       </div>
@@ -248,30 +224,28 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <p>
-        <a href="#">今日要闻</a>
+        <a href="/newslist">最新要闻</a>
       </p>
     </div>
     <div class="panel-body">
       <div class="col-md-5">
         <a href="#">
-          <img src="img/635941780010537110.jpg" class="img-responsive" alt="">
+          <img src="<%= all[0].footers[0].pic %>" class="img-responsive" alt="">
         </a>
       </div>
       <div class="col-md-7">
-        <a href="#">
-          <h3>《动物城》登顶影史动画冠军，《荒野猎人》3天破2亿</h3>
+        <a href="<%= all[0].footers[0].href %>">
+          <h3><%= all[0].footers[0].title %></h3>
         </a>
-        <p>2016-03-21</p>
-        <p>2016年第11周周末（3.18-3.20），内地电影市场票房报收5.37亿，环比下降17.13％，观影人次1689万，环比下降10.63％</p>
+        <p><%= all[0].footers[0].time %></p>
+        <p><%= all[0].footers[0].content %></p>
         <ul>
-          <li><a href="#">
-              第10周影院：TOP10影城5家单日单厅收益超平均值
-            </a>2016-03-17
+          <% all[0].footers[0].news.forEach(function (d) { %>
+          <li><a href="<%= d.href %>">
+              <%= d.title %>
+            </a><%= d.time %>
           </li>
-          <li><a href="#">
-              第10周票房：《动物城》大反转制霸，内地影市赶超北美可期
-            </a>2016-03-15
-          </li>
+          <% }) %>
         </ul>
       </div>
     </div>
@@ -293,7 +267,7 @@
       dataType: 'json',
       success: function (d) {
         var ctx = $('#tdchart').get(0).getContext("2d");
-        new Chart(ctx).Doughnut(d[0].data, {responsive: true});
+        new Chart(ctx).Doughnut(d[0].data, {responsive: true, percentageInnerCutout: 60});
       }
     })
 

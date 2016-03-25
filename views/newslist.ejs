@@ -1,0 +1,40 @@
+<% include header %>
+<div id="news-container" style="width: 80%" class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">最近新闻</a>
+        <a href="#" class="list-group-item">即将上映</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#">最近新闻</a></li>
+      </ul>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table">
+            <% newslist.d.forEach(function (d) { %>
+            <tr>
+              <td>
+                <span><%= d.addtime.substring(0, d.addtime.indexOf(' ')) %></span>
+                <span><a href="#"><%= d.title.trim() %></a></span>
+              </td>
+            </tr>
+            <% }) %>
+          </table>
+        </div>
+        <nav>
+          <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <% for(var i = 2;i <= newslist.tolPage;i++){ %>
+            <li><a href="/newslist/<%= i %>"><%= i %> </a></li>
+            <% } %>
+            <li><a href="#"><span aria-hidden="true">&raquo;</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

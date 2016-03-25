@@ -16,6 +16,8 @@ real.prototype = {
         imgs = []
         pchart = []
         releaselist = []
+        footer = []
+        bangdan = []
         $ = cheerio.load(res.text)
         img = ''
         grade = '--'
@@ -68,6 +70,60 @@ real.prototype = {
           }
           )
         )
+        tnews = []
+        $('#newsmore p').each(->
+          tnews.push({
+            href: $(this).find('a').attr('href').trim()
+            title: $(this).find('a').text().trim()
+            time: $(this).find('em').text().trim()
+          })
+        )
+        footer.push({
+          title: $('#titleH2 a').text().trim()
+          href: $('#titleH2 a').attr('href').trim()
+          pic: $('#n_pic img').attr('src').trim()
+          time: $('#n_time').text().trim()
+          content: $('#n_content').text().trim()
+          news: tnews
+        })
+        aTop = []
+        $('ul.ul_jjsy').first().find('li').each(->
+          console.log('================================aTop')
+          console.log($(this).find('a img').attr('title'))
+          aTop.push({
+            title: $(this).find('a img').attr('title').trim()
+            img: $(this).find('a img').attr('src').trim()
+            href: 'http://www.cbooo.cn/' + $(this).find('a').first().attr('href')
+            content: $(this).find('p').text().trim()
+          })
+        )
+        dTop = []
+        $('ul.ul_jjsy').eq(1).find('li').each(->
+          console.log('================================aTop')
+          console.log($(this).find('a img').attr('title'))
+          dTop.push({
+            title: $(this).find('a img').attr('title').trim()
+            img: $(this).find('a img').attr('src').trim()
+            href: 'http://www.cbooo.cn/' + $(this).find('a').first().attr('href')
+            content: $(this).find('p').text().trim()
+          })
+        )
+        bTop = []
+        $('ul.ul_jjsy').eq(2).find('li').each(->
+          console.log('================================bTop')
+          console.log($(this).find('a img').attr('title'))
+          bTop.push({
+            title: $(this).find('a img').attr('title').trim()
+            img: $(this).find('a img').attr('src').trim()
+            href: 'http://www.cbooo.cn/' + $(this).find('a').first().attr('href')
+            content: $(this).find('p').text().trim()
+          })
+        )
+        bangdan.push({
+          aTop: aTop
+          dTop: dTop
+          bTop: bTop
+        })
         d = new Date()
         all.push(
           titles: {
@@ -79,6 +135,8 @@ real.prototype = {
           data: pchart
           imgs: imgs
           releases: releaselist
+          footers: footer
+          bangdan: bangdan
         )
         response.send(all)
     )

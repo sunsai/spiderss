@@ -6,6 +6,6 @@ Date.prototype.Format = (str)->
   return str
 Date.prototype.Week = ->
   Week = ['日', '一', '二', '三', '四', '五', '六']
-  return '星期' + Week[this.getDay()]
+  return '周' + Week[this.getDay()]
 
 module.exports = Date
