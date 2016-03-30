@@ -88,8 +88,6 @@ real.prototype = {
         })
         aTop = []
         $('ul.ul_jjsy').first().find('li').each(->
-          console.log('================================aTop')
-          console.log($(this).find('a img').attr('title'))
           aTop.push({
             title: $(this).find('a img').attr('title').trim()
             img: $(this).find('a img').attr('src').trim()
@@ -99,8 +97,6 @@ real.prototype = {
         )
         dTop = []
         $('ul.ul_jjsy').eq(1).find('li').each(->
-          console.log('================================aTop')
-          console.log($(this).find('a img').attr('title'))
           dTop.push({
             title: $(this).find('a img').attr('title').trim()
             img: $(this).find('a img').attr('src').trim()
@@ -110,8 +106,6 @@ real.prototype = {
         )
         bTop = []
         $('ul.ul_jjsy').eq(2).find('li').each(->
-          console.log('================================bTop')
-          console.log($(this).find('a img').attr('title'))
           bTop.push({
             title: $(this).find('a img').attr('title').trim()
             img: $(this).find('a img').attr('src').trim()

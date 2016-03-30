@@ -1,30 +1,37 @@
 body {
-  font-family: "Microsoft YaHei UI"; }
+  font-family: "Microsoft YaHei UI";
+}
 
 .panel-heading p {
   font-size: 18px;
   font-weight: bold;
   color: #129cf0;
-  margin: 0 auto; }
-  .panel-heading p:hover {
-    font-weight: bolder;
-    color: #109bee; }
+  margin: 0 auto;
+}
+.panel-heading p:hover {
+  font-weight: bolder;
+  color: #00A0E9;
+}
 
 #navbar .navbar-default {
   background-color: #FFFFFF;
   border-color: #FFFFFF;
-  height: 60px; }
-  #navbar .navbar-default ul.nav {
-    padding-left: 40px;
-    list-style: none; }
-    #navbar .navbar-default ul.nav li a {
-      font-family: "Microsoft YaHei UI";
-      font-size: 20px;
-      color: #000;
-      font-weight: 500;
-      padding: 20px 20px; }
-  #navbar .navbar-default .form-group {
-    margin: 10px 10px; }
+  height: 60px;
+}
+#navbar .navbar-default ul.nav {
+  padding-left: 40px;
+  list-style: none;
+}
+#navbar .navbar-default ul.nav li a {
+  font-family: "Microsoft YaHei UI";
+  font-size: 20px;
+  color: #000;
+  font-weight: 500;
+  padding: 20px 20px;
+}
+#navbar .navbar-default .form-group {
+  margin: 10px 10px;
+}
 
 #changeImg {
   font-family: "Microsoft YaHei UI";
@@ -34,301 +41,412 @@ body {
   color: #030206;
   margin: 5px auto;
   vertical-align: middle;
-  text-align: center; }
-  #changeImg .glass {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 30px 0 30px 0; }
-  #changeImg .container {
-    background: #ffffff;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin: 0 auto;
-    border-radius: 4px; }
-  #changeImg .thumbnail {
-    display: block;
-    padding: 4px;
-    margin: 25px 10px 10px 10px;
-    line-height: 1;
-    background-color: #fff;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-    -webkit-transition: border .2s ease-in-out;
-    -o-transition: border .2s ease-in-out;
-    transition: border .2s ease-in-out;
-    text-align: left; }
-    #changeImg .thumbnail img {
-      height: 320px;
-      width: 220px;
-      margin: 0px auto; }
-  #changeImg h1 {
-    font-weight: 500;
-    text-align: center; }
-  #changeImg h2 {
-    font-weight: 500;
-    text-align: center; }
-  #changeImg h3 {
-    font-weight: 500;
-    text-align: center; }
-  #changeImg h4 {
-    font-weight: 500;
-    text-align: center; }
-  #changeImg h5 {
-    font-weight: 500;
-    text-align: center; }
-  #changeImg h6 {
-    font-weight: 500;
-    text-align: center; }
-  #changeImg h3 {
-    color: #129cf0; }
-  #changeImg h4 span#day {
-    color: #f68b3d; }
-  #changeImg .rimg-list {
-    display: none; }
-    #changeImg .rimg-list p {
-      white-space: nowrap; }
-  #changeImg .table > tbody > tr:hover {
-    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-    color: #129cf0; }
-  #changeImg #uptime {
-    text-align: left; }
-    #changeImg #uptime div {
-      margin: -10px 0 5px 0;
-      color: #141313; }
-      #changeImg #uptime div span {
-        color: #129cf0; }
-    #changeImg #uptime a {
-      text-decoration: none;
-      color: #129cf0; }
+  text-align: center;
+}
+#changeImg .glass {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 0 30px 0;
+}
+#changeImg .container {
+  background: #ffffff;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+#changeImg .thumbnail {
+  display: block;
+  padding: 4px;
+  margin: 25px 10px 10px 10px;
+  line-height: 1;
+  background-color: #fff;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
+  text-align: left;
+}
+#changeImg .thumbnail img {
+  height: 320px;
+  width: 220px;
+  margin: 0px auto;
+}
+#changeImg h1 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h2 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h3 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h4 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h5 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h6 {
+  font-weight: 500;
+  text-align: center;
+}
+#changeImg h3 {
+  color: #129cf0;
+}
+#changeImg h4 span#day {
+  color: #f68b3d;
+}
+#changeImg .rimg-list {
+  display: none;
+}
+#changeImg .rimg-list p {
+  white-space: nowrap;
+}
+#changeImg .table > tbody > tr:hover {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  color: #129cf0;
+}
+#changeImg #uptime {
+  text-align: left;
+}
+#changeImg #uptime div {
+  margin: -10px 0 5px 0;
+  color: #141313;
+}
+#changeImg #uptime div span {
+  color: #129cf0;
+}
+#changeImg #uptime a {
+  text-decoration: none;
+  color: #129cf0;
+}
 
 #contents.row {
   margin-top: 65px;
   margin-right: -15px;
-  margin-left: -15px; }
-  #contents.row .page-header {
-    padding-bottom: 9px;
-    padding: 5px 5px;
-    margin: 0 0 5px 0;
-    border-bottom: 1px solid #eee; }
+  margin-left: -15px;
+}
+#contents.row .page-header {
+  padding-bottom: 9px;
+  padding: 5px 5px;
+  margin: 0 0 5px 0;
+  border-bottom: 1px solid #eee;
+}
 
 #leftnav {
-  text-align: center; }
-  #leftnav li:hover {
-    background: #f5f5f5; }
-  #leftnav a {
-    color: #000;
-    font-size: 14px;
-    font-family: "Microsoft YaHei UI";
-    font-weight: bold; }
-    #leftnav a:link {
-      text-decoration: none; }
-    #leftnav a:visited {
-      text-decoration: none; }
-    #leftnav a:active {
-      text-decoration: none; }
-    #leftnav a:hover {
-      text-decoration: none; }
+  text-align: center;
+}
+#leftnav li:hover {
+  background: #f5f5f5;
+}
+#leftnav a {
+  color: #000;
+  font-size: 14px;
+  font-family: "Microsoft YaHei UI";
+  font-weight: bold;
+}
+#leftnav a:link {
+  text-decoration: none;
+}
+#leftnav a:visited {
+  text-decoration: none;
+}
+#leftnav a:active {
+  text-decoration: none;
+}
+#leftnav a:hover {
+  text-decoration: none;
+}
 
 #banner.container-fluid {
   width: 100%;
   height: 80px;
   background-color: #010104;
   text-align: center;
-  overflow: hidden; }
-  #banner.container-fluid a {
-    vertical-align: top;
-    display: inline-block; }
-    #banner.container-fluid a img {
-      vertical-align: middle;
-      width: 75%;
-      height: 80px; }
+  overflow: hidden;
+}
+#banner.container-fluid a {
+  vertical-align: top;
+  display: inline-block;
+}
+#banner.container-fluid a img {
+  vertical-align: middle;
+  width: 75%;
+  height: 80px;
+}
 
 #today .panel-default {
   border-color: #ddd;
-  height: 605px; }
+  height: 605px;
+}
 #today a {
   font-family: "Microsoft YaHei UI";
   text-decoration: none;
   font-weight: 400;
-  color: #129cf0; }
+  color: #129cf0;
+}
 #today h1 {
   text-align: center;
   font-family: "Microsoft YaHei UI";
-  color: #515151; }
+  color: #515151;
+}
 #today h2 {
   text-align: center;
   font-family: "Microsoft YaHei UI";
-  color: #515151; }
+  color: #515151;
+}
 #today h3 {
   text-align: center;
   font-family: "Microsoft YaHei UI";
-  color: #515151; }
+  color: #515151;
+}
 #today h4 {
   text-align: center;
   font-family: "Microsoft YaHei UI";
-  color: #515151; }
+  color: #515151;
+}
 #today h5 {
   text-align: center;
   font-family: "Microsoft YaHei UI";
-  color: #515151; }
+  color: #515151;
+}
 #today h6 {
   text-align: center;
   font-family: "Microsoft YaHei UI";
-  color: #515151; }
+  color: #515151;
+}
 #today .panel-body p {
-  margin: 5px 0; }
-  #today .panel-body p span {
-    font-weight: bold; }
-    #today .panel-body p span:first-child {
-      margin-left: 10px;
-      line-height: 20px;
-      color: #129cf0;
-      width: 16px;
-      height: 16px; }
+  margin: 5px 0;
+}
+#today .panel-body p span {
+  font-weight: bold;
+}
+#today .panel-body p span:first-child {
+  margin-left: 10px;
+  line-height: 20px;
+  color: #129cf0;
+  width: 16px;
+  height: 16px;
+}
 #today .panel-body #canvas-container {
   width: 250px;
   height: 250px;
   text-align: center;
-  margin-left: -5px; }
+  margin-left: -5px;
+}
 #today .panel-body table tbody tr:hover {
   color: #129cf0;
-  font-weight: bold; }
+  font-weight: bold;
+}
 #today .col-md-1 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-2 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-3 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-4 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-5 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-6 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-7 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-8 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-9 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-10 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-11 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 #today .col-md-12 {
   position: relative;
   min-height: 1px;
-  padding: 0 5px; }
+  padding: 0 5px;
+}
 
 #comming-comtainer .panel-body a {
   font-family: "Microsoft YaHei UI";
   text-decoration: none;
   font-weight: 400;
-  color: #129cf0; }
+  color: #129cf0;
+}
 #comming-comtainer table tr {
-  height: 40px; }
+  height: 40px;
+}
 
 #history img {
   width: 48px;
-  height: 64px; }
+  height: 64px;
+}
 #history .media-list {
-  margin: 10px auto; }
-  #history .media-list li {
-    font-family: "Microsoft YaHei UI"; }
-    #history .media-list li a {
-      text-decoration: none;
-      font-weight: 400;
-      color: #129cf0; }
-    #history .media-list li span {
-      border: 1px solid #129cf0;
-      width: 20px;
-      height: 20px;
-      background: #129cf0;
-      color: #FFFFFF;
-      padding: 0px 2px; }
-    #history .media-list li h5 {
-      font-weight: 500; }
-    #history .media-list li p {
-      font-weight: 400; }
+  margin: 10px auto;
+}
+#history .media-list li {
+  font-family: "Microsoft YaHei UI";
+}
+#history .media-list li a {
+  text-decoration: none;
+  font-weight: 400;
+  color: #129cf0;
+}
+#history .media-list li span {
+  border: 1px solid #129cf0;
+  width: 20px;
+  height: 20px;
+  background: #129cf0;
+  color: #FFFFFF;
+  padding: 0px 2px;
+}
+#history .media-list li h5 {
+  font-weight: 500;
+}
+#history .media-list li p {
+  font-weight: 400;
+}
 
 #news {
-  font-family: "Microsoft YaHei UI"; }
-  #news h3 {
-    font-size: 24px;
-    margin: 10px 0;
-    color: #000; }
-  #news p {
-    line-height: 30px;
-    padding-left: 25px; }
-  #news ul li {
-    line-height: 40px; }
-    #news ul li a {
-      font-weight: bold;
-      font-size: 14px;
-      color: #000; }
-  #news a {
-    text-decoration: none;
-    font-weight: 400;
-    color: #129cf0; }
+  font-family: "Microsoft YaHei UI";
+}
+#news h3 {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #000;
+}
+#news p {
+  line-height: 30px;
+  padding-left: 25px;
+}
+#news ul li {
+  line-height: 40px;
+}
+#news ul li a {
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
+}
+#news a {
+  text-decoration: none;
+  font-weight: 400;
+  color: #129cf0;
+}
 
 #hr {
   margin-top: 3px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 4px solid #eee; }
+  border-top: 4px solid #eee;
+}
 
 #paipian {
-  font-family: "Microsoft YaHei UI"; }
-  #paipian ul.nav li a {
-    color: #636161; }
-  #paipian #future {
-    border-top: 3px solid #CCCCCC;
-    font-weight: 500;
-    font-size: 15px;
-    padding: 10px 0; }
-    #paipian #future a {
-      color: #636161;
-      text-decoration: none; }
-      #paipian #future a.active {
-        background-color: #109bee; }
-      #paipian #future a span {
-        margin: 0px 25px; }
-  #paipian .nav-pills > li.active > a {
-    color: #fff;
-    background-color: #00A0E9;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px; }
-  #paipian #ppcount {
-    border: 1px solid #ececfb;
-    height: 400px;
-    margin-bottom: 10px; }
+  font-family: "Microsoft YaHei UI";
+}
+#paipian ul.nav li a {
+  color: #636161;
+}
+#paipian a {
+  text-align: center;
+  font-weight: 600;
+  color: #00A0E9;
+}
+#paipian .list-group-item {
+  border: 1px solid #eee;
+  background-color: #fff;
+}
+#paipian .list-group-item.active {
+  border-left: 5px solid #00A0E9;
+}
+#paipian .list-group-item:focus, #paipian .list-group-item:hover, #paipian .list-group-item:visited {
+  margin: 3px auto;
+}
+#paipian .pp-top-contaner {
+  border: 1px solid #eee;
+  margin: 2px 2px;
+}
+#paipian #lminfo, #paipian #rminfo {
+  margin: 60px 0 20px 0;
+}
+#paipian #lminfo p, #paipian #rminfo p {
+  line-height: 30px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+#paipian #lminfo p span:nth-child(1), #paipian #rminfo p span:nth-child(1) {
+  color: #129cf0;
+}
+#paipian #ppcanvas-container {
+  width: 280px;
+  height: 280px;
+  margin: 10px auto;
+}
+#paipian #future {
+  border-top: 3px solid #CCCCCC;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 0;
+}
+#paipian #future a {
+  color: #636161;
+  text-decoration: none;
+}
+#paipian #future a.active {
+  background-color: #00A0E9;
+}
+#paipian #future a span {
+  margin: 0px 25px;
+}
+#paipian .nav-pills > li.active > a {
+  color: #fff;
+  background-color: #00A0E9;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
 
 #footer {
   background: rgba(248, 248, 248, 0.8);
@@ -338,38 +456,49 @@ body {
   /*padding: 10px 0;*/
   padding-top: 15px;
   padding-bottom: 15px;
-  font-weight: 500; }
+  font-weight: 500;
+}
 
 #news-container {
-  font-family: "Microsoft YaHei UI"; }
-  #news-container table tr {
-    border: 0 solid #ffffff;
-    vertical-align: inherit;
-    border-color: inherit; }
-  #news-container .nav-pills li {
-    width: 120px;
-    height: 50px;
-    border-radius: 0;
-    text-align: center; }
-    #news-container .nav-pills li a {
-      color: #fff;
-      background-color: #00A0E9; }
-  #news-container .list-group-item.active {
-    z-index: 2;
-    color: #fff;
-    background-color: #00A0E9;
-    border-color: #00A0E9; }
-  #news-container table {
-    font-size: 16px;
-    color: #000; }
-    #news-container table tr {
-      height: 45px; }
-      #news-container table tr td {
-        border: 0;
-        background: url("../img/linea.gif") no-repeat 100px -75px; }
-        #news-container table tr td a {
-          color: #000; }
-        #news-container table tr td span:nth-child(2) {
-          margin-left: 50px; }
+  font-family: "Microsoft YaHei UI";
+}
+#news-container table tr {
+  border: 0 solid #ffffff;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+#news-container .nav-pills li {
+  width: 120px;
+  height: 50px;
+  border-radius: 0;
+  text-align: center;
+}
+#news-container .nav-pills li a {
+  color: #fff;
+  background-color: #00A0E9;
+}
+#news-container .list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #00A0E9;
+  border-color: #00A0E9;
+}
+#news-container table {
+  font-size: 16px;
+  color: #000;
+}
+#news-container table tr {
+  height: 45px;
+}
+#news-container table tr td {
+  border: 0;
+  background: url("../img/linea.gif") no-repeat 100px -75px;
+}
+#news-container table tr td a {
+  color: #000;
+}
+#news-container table tr td span:nth-child(2) {
+  margin-left: 50px;
+}
 
 /*# sourceMappingURL=css.css.map */

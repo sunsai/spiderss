@@ -1,8 +1,9 @@
 express = require('express')
 router = express.Router()
+paipian = require('../spiders/paipian')
+
 router.get('/', (req, res)->
-  res.render('paipian', {
-    title: 'test22444'
-  })
+  pp = new paipian('http://www.cbooo.cn/Screen/getScreenData?days=0')
+  pp.getData(res);
 )
 module.exports = router;

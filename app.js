@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var realtime = require('./routes/realtime');
 var paipian = require('./routes/paipian');
 var newslist= require('./routes/newslist');
+var paipiantrend= require('./routes/paipiantrend');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/users', users);
 app.use('/realtime', realtime);
 app.use('/paipian', paipian);
 app.use('/newslist', newslist);
+app.use('/paipiantrend', paipiantrend);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

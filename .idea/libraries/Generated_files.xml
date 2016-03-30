@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/routes/paipiantrend.js" />
+        <item url="file://$PROJECT_DIR$/routes/paipian.js" />
+        <item url="file://$PROJECT_DIR$/spiders/paipiantren.js" />
+        <item url="file://$PROJECT_DIR$/spiders/api.js" />
+        <item url="file://$PROJECT_DIR$/spiders/paipian.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/routes/paipiantrend.js" />
+      <root url="file://$PROJECT_DIR$/routes/paipian.js" />
+      <root url="file://$PROJECT_DIR$/spiders/paipiantren.js" />
+      <root url="file://$PROJECT_DIR$/spiders/api.js" />
+      <root url="file://$PROJECT_DIR$/spiders/paipian.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

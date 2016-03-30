@@ -251,8 +251,7 @@
     </div>
   </div>
 </div>
-<script src="components/Chart.js/Chart.js"></script>
-<script src="js/data.js"></script>
+
 <script>
   $(document).ready(function () {
     $('div.rimg-list:first').css({'display': 'block'});
@@ -260,6 +259,7 @@
       var imgId = $(this).attr('id').replace('r_', 'rimg_');
       $('div.rimg-list').css({'display': 'none'});
       $('#' + imgId).css({'display': 'block'});
+      $('#changeImg').css({background:"url($('#' + imgId).find('img').attr('href'))"});
     });
     var charData = '';
     $.ajax({
