@@ -38,7 +38,6 @@
         </div>
       </div>
       <div class="row pp-top-contaner">
-        <%= ulPaipian.data1[0].moviename %>
         <table class="table">
 
           <tr>
@@ -133,6 +132,13 @@
         responsive: true, percentageInnerCutout: 70,
       });
     });
+
+    $.getJSON("http://www.cbooo.cn/Screen/getScreenData?days=0", function(data){
+      $.each(data.items, function(i,item){
+       console.log(item);
+      });
+  });
+
   })
 </script>
 <% include footer %>

@@ -11,16 +11,16 @@ pp.prototype = {
         console.error(err)
       else
 #        $ = cheerio.load(res.text)
-        response.send({
-          rzData: JSON.parse(res.text).data4.sort((a, b)->
-            return a.MovieID - b.MovieID
-          )
-          title: "cool"
-        })
-#        response.render('paipian', {
-#          rzData: JSON.parse(res.text).data4.sort()
+#        response.send({
+#          rzData: JSON.parse(res.text).data4.sort((a, b)->
+#            return a.MovieID - b.MovieID
+#          )
 #          title: "cool"
 #        })
+        response.render('paipian', {
+          ulPaipian: JSON.parse(res.text)
+          title: "cool"
+        })
     )
 }
 module.exports = pp;
