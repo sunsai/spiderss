@@ -424,6 +424,20 @@ body {
   height: 280px;
   margin: 10px auto;
 }
+#paipian table tr td {
+  text-align: center;
+}
+#paipian table tr td p {
+  color: #00A0E9;
+}
+#paipian table tr td:nth-child(1) {
+  border: 1px solid #dfbfff;
+  background: #e9e1ff;
+  width: 80px;
+}
+#paipian table tr td:nth-child(2) {
+  border: 1px solid #eee;
+}
 #paipian #future {
   border-top: 3px solid #CCCCCC;
   font-weight: 500;

@@ -38,80 +38,70 @@
         </div>
       </div>
       <div class="row pp-top-contaner">
-        <table class="table">
-
+        <table class="table table-hover">
           <tr>
             <td></td>
             <td>总场次</td>
-            <% ulPaipian.data1.forEach(function (item) { %>
-            <td><%= item.moviename %></td>
+            <% data1.forEach(function (item) { %>
+            <td>
+              <%= item.moviename %>
+            </td>
             <% }) %>
           </tr>
           <tr>
             <td>全国</td>
             <td>
-              <%=ulPaipian.data3[0].countrynum%>
-              <p>
-                100%
-              </p>
+              <%= data3[0].countrynum %>
+              <p>100%</p>
             </td>
-            <% ulPaipian.data1.forEach(function (item) { %>
+            <% data1.forEach(function (item) { %>
             <td>
               <%= item.movienum %>
-              <p>
-                <%= item.Per_num %>%
-              </p>
+              <p><%= item.Per_num %>%</p>
             </td>
             <% }) %>
-          </tr>
           <tr>
             <td>认知指数</td>
+            <td>----</td>
+            <% data1.forEach(function (item) { %>
             <td>
-             ----
-            </td>
-            <% ulPaipian.data4.forEach(function (item) { %>
-            <td>
-              <%= item.MovieName %>
-              <p>
-                <%= item.RenZhiIndex %>%
-              </p>
-            </td>
-            <% }) %>
-          </tr><tr>
-            <td>全国</td>
-            <td>
-              <%= ulPaipian.data3[0].countrynum %>
-              <p>
-                100%
-              </p>
-            </td>
-            <% ulPaipian.data1.forEach(function (item) { %>
-            <td>
-              <%= item.movienum %>
-              <p>
-                <%= item.Per_num %>%
-              </p>
+              <%= item.rezIndexs %>
             </td>
             <% }) %>
           </tr>
           <tr>
-            <td>全国</td>
+            <td>购票指数</td>
+            <td>----</td>
+            <% data1.forEach(function (item) { %>
             <td>
-              <%= ulPaipian.data3[0].countrynum %>
-              <p>
-                100%
-              </p>
-            </td>
-            <% ulPaipian.data1.forEach(function (item) { %>
-            <td>
-              <%= item.movienum %>
-              <p>
-                <%= item.Per_num %>%
-              </p>
+              <%= item.buyIndexs %>
             </td>
             <% }) %>
           </tr>
-
+          <tr>
+            <td>口碑指数</td>
+            <td>----</td>
+            <% data1.forEach(function (item) { %>
+            <td>
+              <%= item.rapIndexs %>
+            </td>
+            <% }) %>
+          </tr>
+          <% data3.forEach(function (item) { %>
+          <tr>
+            <td><%= item.name %></td>
+            <td>
+              <%= item.citynum %>
+              <p>100%</p>
+            </td>
+            <% item.ctmoives.forEach(function (id) { %>
+            <td>
+              <%= id.sumnum %>
+              <p><%= id.crate %>%</p>
+            </td>
+            <% }) %>
+          </tr>
+          <% }) %>
         </table>
       </div>
     </div>
@@ -132,13 +122,6 @@
         responsive: true, percentageInnerCutout: 70,
       });
     });
-
-    $.getJSON("http://www.cbooo.cn/Screen/getScreenData?days=0", function(data){
-      $.each(data.items, function(i,item){
-       console.log(item);
-      });
-  });
-
   })
 </script>
 <% include footer %>

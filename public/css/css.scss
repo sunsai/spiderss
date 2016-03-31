@@ -1,5 +1,5 @@
-$boder-color:#eee;
-$blue:#00A0E9;
+$boder-color: #eee;
+$blue: #00A0E9;
 body {
   font-family: "Microsoft YaHei UI";
 }
@@ -322,29 +322,29 @@ body {
       }
     }
   }
-  a{
+  a {
     text-align: center;
     font-weight: 600;
     color: #00A0E9;
   }
-  .list-group-item{
+  .list-group-item {
     border: 1px solid #eee;
     background-color: #fff;
-    &.active{
+    &.active {
       border-left: 5px solid #00A0E9;
     }
-    &:focus,&:hover,&:visited{
+    &:focus, &:hover, &:visited {
       margin: 3px auto;
     }
   }
-  .pp-top-contaner{
+  .pp-top-contaner {
     border: 1px solid $boder-color;
-    margin:2px 2px;
+    margin: 2px 2px;
   }
-  #lminfo,#rminfo{
-    margin:60px 0 20px 0;
-    p{
-      span:nth-child(1){
+  #lminfo, #rminfo {
+    margin: 60px 0 20px 0;
+    p {
+      span:nth-child(1) {
         color: #129cf0;
       }
       line-height: 30px;
@@ -352,10 +352,29 @@ body {
       white-space: nowrap;
     }
   }
-  #ppcanvas-container{
+  #ppcanvas-container {
     width: 280px;
     height: 280px;
-    margin:10px auto;
+    margin: 10px auto;
+  }
+  table {
+    tr {
+      td {
+        text-align: center;
+        p {
+          color: $blue;
+        }
+      }
+      td:nth-child(1) {
+        border: 1px solid #dfbfff;
+        background: #e9e1ff;
+        width: 80px;
+      }
+      td:nth-child(2) {
+        border: 1px solid $boder-color;
+      }
+    }
+
   }
   #future {
     border-top: 3px solid #CCCCCC;
