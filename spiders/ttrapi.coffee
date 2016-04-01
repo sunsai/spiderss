@@ -1,10 +1,9 @@
 superagent = require('superagent')
-cheerio = require('cheerio')
-#/* GET home page. */
+#cheerio = require('cheerio')
 
-ppt = (page)->
+ttrapi = (page)->
   @page = page
-ppt.prototype = {
+ttrapi.prototype = {
   getData: (response)->
     superagent.get(@page).end((err, res)->
       if err
@@ -29,12 +28,11 @@ ppt.prototype = {
             )
           )
         )
-        response.render('paipiantrend', {
+        response.send({
           data1: data1
           data2: data2
           data3: data3
-          title: 'sai'
         })
     )
 }
-module.exports = ppt;
+module.exports = ttrapi;

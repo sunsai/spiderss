@@ -1,0 +1,53 @@
+<% include header %>
+<div id="paipian" class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <a href="/teleplay" class="list-group-item active">电视剧集</a>
+        <a href="/daily" class="list-group-item">综艺节目</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          选择城市：<select name="dpcountry" class="dropdown" id="dpcountry">
+            <option value="All" selected="selected">全国</option>
+          </select>
+        </div>
+      </div>
+      <div id="ppr-canvas-container " class="row pp-top-contaner">
+        <div class="col-md-12 col-sm-12">
+          <canvas id="pp-canvas-trend"></canvas>
+        </div>
+      </div>
+      <div class="pp-top-contaner">
+        <table class="table table-hover">
+          <tr>
+            <td></td>
+            <% data1.forEach(function (item) { %>
+            <td><%= item.sdate %></td>
+            <% }) %>
+          </tr>
+          <tr>
+            <td>全国</td>
+            <% data1.forEach(function (item) { %>
+            <td><%= item.num %></td>
+            <% }) %>
+          </tr>
+          <% data3.forEach(function (item) { %>
+          <tr>
+            <td><%= item.moviename %></td>
+            <% item.daymoives[0].forEach(function (dd) { %>
+            <td>
+              <%= dd.m_daysum %>
+              <p><%= dd.m_dayrate %>%</p>
+            </td>
+            <% }) %>
+          </tr>
+          <% }) %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<% include footer %>

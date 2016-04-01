@@ -337,9 +337,20 @@ body {
       margin: 3px auto;
     }
   }
+  #ppr-canvas-container  {
+    width: 95%;
+    height: 500px;
+    border: 1px solid #eee;
+    margin: 2px auto;
+  }
+  #ppcanvas-container {
+    width: 280px;
+    height: 280px;
+    margin: 10px auto;
+  }
   .pp-top-contaner {
     border: 1px solid $boder-color;
-    margin: 2px 2px;
+    margin: 4px 4px;
   }
   #lminfo, #rminfo {
     margin: 60px 0 20px 0;
@@ -352,15 +363,12 @@ body {
       white-space: nowrap;
     }
   }
-  #ppcanvas-container {
-    width: 280px;
-    height: 280px;
-    margin: 10px auto;
-  }
+
   table {
     tr {
       td {
         text-align: center;
+        vertical-align: middle;
         p {
           color: $blue;
         }
@@ -376,6 +384,7 @@ body {
     }
 
   }
+
   #future {
     border-top: 3px solid #CCCCCC;
     font-weight: 500;

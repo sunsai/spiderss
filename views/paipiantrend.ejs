@@ -8,59 +8,99 @@
       </div>
     </div>
     <div class="col-md-9">
-      <ul class="nav nav-pills">
-        <li class="active"><a href="#">全国排片</a></li>
-        <li><a href="#">地域排片</a></li>
-        <li><a href="#">一线城市</a></li>
-        <li><a href="#">二线城市</a></li>
-        <li><a href="#">三线城市</a></li>
-      </ul>
-      <div id="future">
-        <a lass="active" href="#">
-          <span>今天</span>
-        </a>
-        <a c href="#">
-          <span>明天</span>
-        </a>
-        <a href="#">
-          <span>后天</span>
-        </a>
+      <div class="row">
+        <div class="col-md-12">
+          选择城市：<select name="dpcountry" class="dropdown" id="dpcountry">
+            <option value="All" selected="selected">全国</option>
+          </select>
+        </div>
       </div>
-      <canvas id="ppcount" class="form-control"></canvas>
-      <table class="table table-hover table-striped form-control">
-        <thead>
-        <tr>
-          <td></td>
-          <td>总场次</td>
-          <td>荒野猎人</td>
-          <td>疯狂动物城</td>
-          <td>女汉子真爱公式</td>
-          <td>神战：权力之眼</td>
-          <td>叶问3</td>
-          <td>洛杉矶捣蛋计划</td>
-          <td>飞鹰艾迪</td>
-          <td>美人鱼</td>
-          <td>恐怖禁忌之红旗袍</td>
-          <td>床下有人</td>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div id="ppr-canvas-container " class="row pp-top-contaner">
+        <div class="col-md-12 col-sm-12">
+          <canvas id="pp-canvas-trend"></canvas>
+        </div>
+      </div>
+      <div class="pp-top-contaner">
+        <table class="table table-hover">
+          <tr>
+            <td></td>
+            <% data1.forEach(function (item) { %>
+            <td><%= item.sdate %></td>
+            <% }) %>
+          </tr>
+          <tr>
+            <td>全国</td>
+            <% data1.forEach(function (item) { %>
+            <td><%= item.num %></td>
+            <% }) %>
+          </tr>
+          <% data3.forEach(function (item) { %>
+          <tr>
+            <td><%= item.moviename %></td>
+            <% item.daymoives[0].forEach(function (dd) { %>
+            <td>
+              <%= dd.m_daysum %>
+              <p><%= dd.m_dayrate %>%</p>
+            </td>
+            <% }) %>
+          </tr>
+          <% }) %>
+        </table>
+      </div>
     </div>
   </div>
 </div>
 <script>
+  var ctx = $('#pp-canvas-trend').get(0).getContext('2d');
+  lineChartData = {};
+  lineChartData.labels = [];
+  lineChartData.datasets = [];
   $(document).ready(function () {
-    $('#paipian ul.nav li').click(function () {
-      $('#paipian ul.nav li').removeClass('active');
-      $('#future a').removeClass('active');
-      $('#future a:first').addClass('active');
-      $(this).addClass('active');
+    $.getJSON('/sapi', function (dd) {
+      $.each(dd.data3, function (idx, item) {
+        $('#dpcountry').append('<option value="' + item.id + '">' + item.name + '</option>');
+      })
+      $.getJSON('/ttrapi', function (rev) {
+        tmpdata = []
+        $.each(rev.data3[0].daymoives[0], function (idx, item) {
+          lineChartData.labels.push(item.sdate);
+          tmpdata.push(item.m_daysum)
+        })
+        lineChartData.datasets.push({
+          label: rev.data3[0].moviename,
+          fillColor: '#337ab7',
+          strokeColor: "#337ab7",
+          pointColor: "#337ab7",
+          pointStrokeColor: "#337ab7",
+          pointHighlightFill: "#337ab7",
+          pointHighlightStroke: "#337ab7",
+          data: tmpdata
+        })
+        console.log(lineChartData);
+        new Chart(ctx).Line(lineChartData, {
+          responsive: true,
+          scaleFontSize : 14,
+        });
+      })
+
     });
-    $('#future a').click(function () {
-      $('#future a').removeClass('active');
-      $(this).addClass('active');
-    })
+
+//    lineChartData = {
+//      labels : ["January","February","March","April","May","June","July"],
+//      datasets : [
+//        {
+//          label: "My First dataset",
+//          fillColor : "rgba(220,220,220,0.2)",
+//          strokeColor : "rgba(220,220,220,1)",
+//          pointColor : "rgba(220,220,220,1)",
+//          pointStrokeColor : "#fff",
+//          pointHighlightFill : "#fff",
+//          pointHighlightStroke : "rgba(220,220,220,1)",
+//          data :[]
+//        },
+//      ]
+//    }
+
   })
 </script>
+<% include footer %>
