@@ -337,7 +337,7 @@ body {
       margin: 3px auto;
     }
   }
-  #ppr-canvas-container  {
+  #ppr-canvas-container {
     width: 95%;
     height: 500px;
     border: 1px solid #eee;
@@ -351,6 +351,11 @@ body {
   .pp-top-contaner {
     border: 1px solid $boder-color;
     margin: 4px 4px;
+    p {
+      span {
+        margin: 3px 50px;
+      }
+    }
   }
   #lminfo, #rminfo {
     margin: 60px 0 20px 0;
@@ -363,7 +368,6 @@ body {
       white-space: nowrap;
     }
   }
-
   table {
     tr {
       td {

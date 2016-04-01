@@ -419,6 +419,9 @@ body {
   border: 1px solid #eee;
   margin: 4px 4px;
 }
+#paipian .pp-top-contaner p span {
+  margin: 3px 50px;
+}
 #paipian #lminfo, #paipian #rminfo {
   margin: 60px 0 20px 0;
 }
