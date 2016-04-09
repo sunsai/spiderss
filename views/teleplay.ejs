@@ -11,63 +11,94 @@
 
       <div id="ppr-canvascontainer- " class="row pp-top-contaner">
         <div class="row">
-        <div class="col-md-2">
-          我爱男保姆
-        </div>
-        <div class="col-md-10">
-          <div class="progress">
-            <div class="progress-bar progress-bar-success" style="width: 35%">
-              <span class="sr-only">35% Complete (success)</span>
+          <div class="col-md-2">
+            <span class="pull-right">我爱男保姆</span>
+          </div>
+          <div class="col-md-10">
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" style="width: 15%">
+                <span class="sr-only">15% Complete (success)</span>
+              </div>
+              <div class="progress-bar progress-bar-warning" style="width: 20%">
+                <span class="sr-only">20% Complete (warning)</span>
+              </div>
+              <div class="progress-bar progress-bar-danger" style="width: 10%">
+                <span class="sr-only">10% Complete (danger)</span>
+              </div>
             </div>
-            <div class="progress-bar progress-bar-warning" style="width: 20%">
-              <span class="sr-only">20% Complete (warning)</span>
+          </div><div class="col-md-2">
+            <span class="pull-right">我爱男保姆</span>
+          </div>
+          <div class="col-md-10">
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" style="width: 15%">
+                <span class="sr-only">15% Complete (success)</span>
+              </div>
+              <div class="progress-bar progress-bar-warning" style="width: 20%">
+                <span class="sr-only">20% Complete (warning)</span>
+              </div>
+              <div class="progress-bar progress-bar-danger" style="width: 10%">
+                <span class="sr-only">10% Complete (danger)</span>
+              </div>
             </div>
-            <div class="progress-bar progress-bar-danger" style="width: 10%">
-              <span class="sr-only">10% Complete (danger)</span>
+          </div>
+          <div class="col-md-2">
+            <span class="pull-right">我爱男保姆</span>
+          </div>
+          <div class="col-md-10">
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" style="width: 15%">
+                <span class="sr-only">15% Complete (success)</span>
+              </div>
+              <div class="progress-bar progress-bar-warning" style="width: 20%">
+                <span class="sr-only">20% Complete (warning)</span>
+              </div>
+              <div class="progress-bar progress-bar-danger" style="width: 10%">
+                <span class="sr-only">10% Complete (danger)</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="pp-top-contaner">
-      <table class="table table-hover">
-        <tr>
-          <td></td>
-          <td>名称</td>
-          <td>类型</td>
-          <td>优酷</td>
-          <td>土豆</td>
-          <td>爱奇艺</td>
-          <td>搜狐</td>
-          <td>腾讯</td>
-          <td>乐视</td>
-          <td>芒果</td>
-          <td>总播放量</td>
-        </tr>
-        <% for(var i = 0;i < data.length;i++){ %>
-        <tr>
-          <td><%= i + 1 %></td>
-          <td><%= data[i].tvName %></td>
-          <td><%= data[i].genre %></td>
-          <td><%= data[i].youku %></td>
-          <td><%= data[i].tudou %></td>
-          <td><%= data[i].qiyi %></td>
-          <td><%= data[i].sohu %></td>
-          <td><%= data[i].tengxun %></td>
-          <td><%= data[i].leshi %></td>
-          <td><%= data[i].mangguo %></td>
-          <td><%= data[i].diddHints %></td>
-        </tr>
-        <% } %>
-      </table>
-    </div>
-    <div class="pp-top-contaner" style="border-top:3px solid #109bee;">
-      <p><span>注：1、数据来自优酷、土豆、爱奇艺、搜狐、腾讯、乐视视频、芒果网站 单位：万次.</span></p>
-      <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、部分影视剧，电影，综艺包含片花或相关视频播放量。</span></p>
-      <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、数据来自网络，与实际可能存在偏差。</span></p>
-      <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、网络数据存在一定不稳定性，部分视频网站数据可能存在缺失情况。</span></p>
+      <div class="pp-top-contaner">
+        <table class="table table-hover">
+          <tr>
+            <td></td>
+            <td>名称</td>
+            <td>类型</td>
+            <td>优酷</td>
+            <td>土豆</td>
+            <td>爱奇艺</td>
+            <td>搜狐</td>
+            <td>腾讯</td>
+            <td>乐视</td>
+            <td>芒果</td>
+            <td>总播放量</td>
+          </tr>
+          <% for(var i = 0;i < data.length;i++){ %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= data[i].tvName %></td>
+            <td><%= data[i].genre %></td>
+            <td><%= data[i].youku %></td>
+            <td><%= data[i].tudou %></td>
+            <td><%= data[i].qiyi %></td>
+            <td><%= data[i].sohu %></td>
+            <td><%= data[i].tengxun %></td>
+            <td><%= data[i].leshi %></td>
+            <td><%= data[i].mangguo %></td>
+            <td><%= data[i].diddHints %></td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+      <div class="pp-top-contaner" style="border-top:3px solid #109bee;">
+        <p><span>注：1、数据来自优酷、土豆、爱奇艺、搜狐、腾讯、乐视视频、芒果网站 单位：万次.</span></p>
+        <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、部分影视剧，电影，综艺包含片花或相关视频播放量。</span></p>
+        <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、数据来自网络，与实际可能存在偏差。</span></p>
+        <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、网络数据存在一定不稳定性，部分视频网站数据可能存在缺失情况。</span></p>
+      </div>
     </div>
   </div>
-</div>
 </div>
 <% include footer %>
