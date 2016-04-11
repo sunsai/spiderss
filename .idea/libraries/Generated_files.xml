@@ -2,29 +2,43 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/spiders/paipian.js" />
-        <item url="file://$PROJECT_DIR$/spiders/paipiantren.js" />
-        <item url="file://$PROJECT_DIR$/routes/paipiantrend.js" />
-        <item url="file://$PROJECT_DIR$/routes/teleplay.js" />
-        <item url="file://$PROJECT_DIR$/routes/paipian.js" />
-        <item url="file://$PROJECT_DIR$/spiders/tvapi.js" />
         <item url="file://$PROJECT_DIR$/spiders/sapi.js" />
-        <item url="file://$PROJECT_DIR$/spiders/teleplay.js" />
+        <item url="file://$PROJECT_DIR$/spiders/movies.js" />
+        <item url="file://$PROJECT_DIR$/routes/moives.js" />
+        <item url="file://$PROJECT_DIR$/spiders/peoples.js" />
         <item url="file://$PROJECT_DIR$/spiders/ttrapi.js" />
+        <item url="file://$PROJECT_DIR$/routes/peoples.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/spiders/teleplay.js" />
+        <item url="file://$PROJECT_DIR$/spiders/paipian.js" />
+        <item url="file://$PROJECT_DIR$/routes/teleplay.js" />
+        <item url="file://$PROJECT_DIR$/spiders/ppsapi.js" />
+        <item url="file://$PROJECT_DIR$/spiders/mvsapi.js" />
+        <item url="file://$PROJECT_DIR$/spiders/tvapi.js" />
+        <item url="file://$PROJECT_DIR$/routes/paipian.js" />
+        <item url="file://$PROJECT_DIR$/routes/paipiantrend.js" />
+        <item url="file://$PROJECT_DIR$/gulpfile.js" />
+        <item url="file://$PROJECT_DIR$/spiders/paipiantren.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/spiders/paipian.js" />
-      <root url="file://$PROJECT_DIR$/spiders/paipiantren.js" />
-      <root url="file://$PROJECT_DIR$/routes/paipiantrend.js" />
-      <root url="file://$PROJECT_DIR$/routes/teleplay.js" />
-      <root url="file://$PROJECT_DIR$/routes/paipian.js" />
-      <root url="file://$PROJECT_DIR$/spiders/tvapi.js" />
       <root url="file://$PROJECT_DIR$/spiders/sapi.js" />
-      <root url="file://$PROJECT_DIR$/spiders/teleplay.js" />
+      <root url="file://$PROJECT_DIR$/spiders/movies.js" />
+      <root url="file://$PROJECT_DIR$/routes/moives.js" />
+      <root url="file://$PROJECT_DIR$/spiders/peoples.js" />
       <root url="file://$PROJECT_DIR$/spiders/ttrapi.js" />
+      <root url="file://$PROJECT_DIR$/routes/peoples.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/spiders/teleplay.js" />
+      <root url="file://$PROJECT_DIR$/spiders/paipian.js" />
+      <root url="file://$PROJECT_DIR$/routes/teleplay.js" />
+      <root url="file://$PROJECT_DIR$/spiders/ppsapi.js" />
+      <root url="file://$PROJECT_DIR$/spiders/mvsapi.js" />
+      <root url="file://$PROJECT_DIR$/spiders/tvapi.js" />
+      <root url="file://$PROJECT_DIR$/routes/paipian.js" />
+      <root url="file://$PROJECT_DIR$/routes/paipiantrend.js" />
+      <root url="file://$PROJECT_DIR$/gulpfile.js" />
+      <root url="file://$PROJECT_DIR$/spiders/paipiantren.js" />
     </CLASSES>
     <SOURCES />
   </library>

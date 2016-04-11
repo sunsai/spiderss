@@ -12,6 +12,7 @@ var paipian = require('./routes/paipian');
 var newslist = require('./routes/newslist');
 var paipiantrend = require('./routes/paipiantrend');
 var tv = require('./routes/teleplay');
+var mvs = require('./routes/moives');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/paipian', paipian);
 app.use('/newslist', newslist);
 app.use('/paipiantrend', paipiantrend);
 app.use('/teleplay', tv);
+app.use('/moives', mvs);
 
 /// catch 404 and forward to error handler
 app.use(function (req, res, next) {
