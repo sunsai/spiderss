@@ -12,7 +12,7 @@ mvsapi.prototype = {
         rev_text = res.text
         response.render('moives',{
           title:'sai'
-          data:JSON.parse(rev_text)
+          data:JSON.parse(rev_text).pData
         })
     )
 }
