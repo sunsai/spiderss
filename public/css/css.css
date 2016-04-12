@@ -397,6 +397,7 @@ body {
 #paipian .list-group-item {
   border: 1px solid #eee;
   background-color: #fff;
+  color: #00A0E9;
 }
 #paipian .list-group-item.active {
   border-left: 5px solid #00A0E9;
@@ -470,6 +471,47 @@ body {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
+}
+
+#moives-container ul img {
+  width: 150px;
+  height: 200px;
+}
+#moives-container ul li {
+  padding: 2px 5px 2px 0;
+}
+#moives-container ul li a {
+  text-align: center;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  text-wrap: none;
+}
+#moives-container ul li a span {
+  color: #00A0E9;
+}
+#moives-container .list-group a {
+  text-align: center;
+  font-weight: 600;
+  color: #00A0E9;
+}
+#moives-container .list-group-item {
+  border: 1px solid #eee;
+  background-color: #fff;
+  color: #00A0E9;
+}
+#moives-container .list-group-item.active {
+  border-left: 5px solid #00A0E9;
+}
+#moives-container .list-group-item:focus, #moives-container .list-group-item:hover, #moives-container .list-group-item:visited {
+  margin: 3px auto;
+}
+#moives-container .col-md-9 {
+  position: relative;
+  padding: 1px 2px;
+}
+#moives-container .container {
+  padding: 1px 2px;
 }
 
 #footer {

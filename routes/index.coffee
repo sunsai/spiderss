@@ -5,7 +5,7 @@ sapi = require('../spiders/sapi')
 ttrapi = require('../spiders/ttrapi')
 tvapi = require('../spiders/tvapi')
 mvsapi = require('../spiders/mvsapi')
-ppssapi = require('../spiders/ppsapi')
+ppsapi = require('../spiders/ppsapi')
 
 #/* GET home page. */
 

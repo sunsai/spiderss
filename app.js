@@ -13,6 +13,7 @@ var newslist = require('./routes/newslist');
 var paipiantrend = require('./routes/paipiantrend');
 var tv = require('./routes/teleplay');
 var mvs = require('./routes/moives');
+var pps = require('./routes/peoples');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/newslist', newslist);
 app.use('/paipiantrend', paipiantrend);
 app.use('/teleplay', tv);
 app.use('/moives', mvs);
+app.use('/peoples', pps);
 
 /// catch 404 and forward to error handler
 app.use(function (req, res, next) {

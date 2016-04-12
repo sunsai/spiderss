@@ -1,5 +1,12 @@
 $boder-color: #eee;
 $blue: #00A0E9;
+@mixin a-gray{
+  text-align: center;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  text-wrap: none;
+}
 body {
   font-family: "Microsoft YaHei UI";
 }
@@ -311,6 +318,24 @@ body {
   border-top: 4px solid #eee;
 }
 
+@mixin list-group-item {
+  border: 1px solid #eee;
+  background-color: #fff;
+  color: $blue;
+  &.active {
+    border-left: 5px solid #00A0E9;
+  }
+  &:focus, &:hover, &:visited {
+    margin: 3px auto;
+  }
+}
+
+@mixin list-group-a {
+  text-align: center;
+  font-weight: 600;
+  color: #00A0E9;
+}
+
 #paipian {
   font-family: "Microsoft YaHei UI";
   ul {
@@ -323,19 +348,18 @@ body {
     }
   }
   a {
-    text-align: center;
-    font-weight: 600;
-    color: #00A0E9;
+    @include list-group-a
   }
   .list-group-item {
-    border: 1px solid #eee;
-    background-color: #fff;
-    &.active {
-      border-left: 5px solid #00A0E9;
-    }
-    &:focus, &:hover, &:visited {
-      margin: 3px auto;
-    }
+    //border: 1px solid #eee;
+    //background-color: #fff;
+    //&.active {
+    //  border-left: 5px solid #00A0E9;
+    //}
+    //&:focus, &:hover, &:visited {
+    //  margin: 3px auto;
+    //}
+    @include list-group-item
   }
   #ppr-canvas-container {
     width: 95%;
@@ -386,9 +410,7 @@ body {
         border: 1px solid $boder-color;
       }
     }
-
   }
-
   #future {
     border-top: 3px solid #CCCCCC;
     font-weight: 500;
@@ -418,6 +440,37 @@ body {
   }
 }
 
+#moives-container {
+  ul{
+    img{
+      width: 150px;
+      height:200px;
+    }
+    li{
+      a{
+        @include a-gray;
+        span{
+          color: $blue;
+        }
+      }
+      padding:2px 5px 2px 0;
+    }
+  }
+  .list-group a {
+    @include list-group-a
+  }
+  .list-group-item {
+    @include list-group-item
+  }
+  .col-md-9{
+    position: relative;
+    padding: 1px 2px;
+  }
+  .container {
+    padding: 1px 2px;
+  }
+}
+
 #footer {
   background: rgba(248, 248, 248, 0.8);
   //background: #d7f8c7;
@@ -429,6 +482,7 @@ body {
   padding-bottom: 15px;
   font-weight: 500;
 }
+
 //#tv-container{
 //  .progress {
 //    height: 20px;

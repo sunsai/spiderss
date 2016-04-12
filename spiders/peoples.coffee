@@ -1,20 +1,18 @@
 superagent = require('superagent')
 url = require('url')
 
-mvsapi = (page)->
+ppsapi = (page)->
   @page = page
-mvsapi.prototype = {
+ppsapi.prototype = {
   getData: (response)->
-    page_urls = url.parse(@page)
-    reqQuery = page_urls.query
     superagent.get(encodeURI(@page)).end((err, res)->
       if err
         console.error(err)
       else
-        response.render('moives', {
+        response.render('peoples', {
           title: 'sai'
           data: JSON.parse(res.text)
         })
     )
 }
-module.exports = mvsapi;
+module.exports = ppsapi;
