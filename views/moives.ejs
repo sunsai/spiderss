@@ -63,19 +63,14 @@
 </div>
 <script>
   $(document).ready(function () {
-    var lis = $('#ulimg li');
+    var lis = $('#ulimg li').css({'display': ''});
+    var len = lis.length;
     lis.each(function (idx, item) {
-      if (idx > 5) {
+      if (idx > 5 && idx < len - 1) {
         $(this).css({'display': 'none'});
       }
-      console.log(idx, item);
+      console.log($(this).css('display'));
     })
-    lis.last().css({'display': ''});
-
-    lis.first().find('a').click(function () {
-      console.log(this);
-    })
-
   })
 </script>
 <% include footer %>
