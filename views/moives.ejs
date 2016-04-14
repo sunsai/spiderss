@@ -35,31 +35,109 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="container">
-        <ul id="ulimg" class="list-inline">
-          <li class="disabled">
-            <a href="#">
-              <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-          </li>
-          <% data.forEach(function (its) { %>
-          <li>
-            <a target="_blank" href="http://www.cbooo.cn/m/<%= its.ID %>">
-              <img src="<%= its.defaultImage %>" alt="<%= its.MovieName %>">
-              <p title="<%= its.MovieName %>"><%= its.MovieName %></p>
-            </a>
-          </li>
-          <% }) %>
-          <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </li>
-        </ul>
+      <div class="col-md-12">
+        <div class="container">
+          <ul id="ulimg" class="list-inline">
+            <li class="disabled">
+              <a href="#">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+            </li>
+            <% data.forEach(function (its) { %>
+            <li>
+              <a target="_blank" href="http://www.cbooo.cn/m/<%= its.ID %>">
+                <img src="<%= its.defaultImage %>" alt="<%= its.MovieName %>">
+                <p title="<%= its.MovieName %>"><%= its.MovieName %></p>
+              </a>
+            </li>
+            <% }) %>
+            <li>
+              <a href="#">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </li>
+          </ul>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <form class="form-horizontal">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    <div class="form-group form-group-sm">
+                      <label class="col-sm-4 control-label" for="formGroupInputSmall">地区：</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-2">
+                    <div class="form-group form-group-sm">
+                      <label class="col-sm-6 control-label" for="formGroupInputSmall">Small label</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-2">
+                    <div class="form-group form-group-sm">
+                      <label class="col-sm-6 control-label" for="formGroupInputSmall">Small label</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+              </form>
+              地区：<select name="tdiss" id="tdiss"></select>
+              类型：<select name="tdiss" id="tdiss"></select>
+              年代：<select name="tdiss" id="tdiss"></select>
+            </div>
+            <div class="panel-body">
+              <ul class="media-list">
+                <li class="media">
+                  <div class="media-left">
+                    <img src="http://www.cbooo.cn/moviepic/211794.jpg" alt="美人鱼">
+                  </div>
+                  <div class="media-body">
+                    <p class="media-heading"><a href="#">美人鱼</a></p>
+                    <p>The Mermaid(2016)票房：￥339061</p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-left">
+                    <img src="http://www.cbooo.cn/moviepic/211794.jpg" alt="美人鱼">
+                  </div>
+                  <div class="media-body">
+                    <p class="media-heading"><a href="#">美人鱼</a></p>
+                    <p>The Mermaid(2016)票房：￥339061</p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-left">
+                    <img src="http://www.cbooo.cn/moviepic/211794.jpg" alt="美人鱼">
+                  </div>
+                  <div class="media-body">
+                    <p class="media-heading"><a href="#">美人鱼</a></p>
+                    <p>The Mermaid(2016)票房：￥339061</p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-left">
+                    <img src="http://www.cbooo.cn/moviepic/211794.jpg" alt="美人鱼">
+                  </div>
+                  <div class="media-body">
+                    <p class="media-heading"><a href="#">美人鱼</a></p>
+                    <p>The Mermaid(2016)票房：￥339061</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <script>
   $(document).ready(function () {
