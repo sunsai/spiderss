@@ -1,0 +1,304 @@
+<% include header %>
+<div class="col-md-10">
+    <div id="navbar1" class="navbar-collapse collapse">
+        <form class="navbar-form navbar-left" role="search">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/realtime">首页</a></li>
+                <li><a href="/realtime">票房</a></li>
+                <li><a href="/paipian">排片</a></li>
+                <li><a href="#contact">中美</a></li>
+                <li><a href="/newslist">资讯</a></li>
+                <li><a href="/teleplay">电视</a></li>
+                <li><a href="#contact">影库</a></li>
+            </ul>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+                </div>
+            </div>
+        </form>
+    </div><!--/.nav-collapse -->
+</div>
+</div>
+</div>
+</nav>
+</div>
+<div class="banner" id="changeImg">
+    <div class="glass">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <h3>CBO实时票房榜</h3>
+                    <h4>
+                        <span id="week"><%= all[0].titles.day %>  <%= all[0].titles.week %></span>
+                        <span id="day">&nbsp;&nbsp;<%= all[0].titles.total %></span>
+                    </h4>
+                    <table class="table table-hover table-tsriped table-responsive">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>影片名称</th>
+                            <th>实时票房（万）</th>
+                            <th>票房占比</th>
+                            <th>累计票房（万）</th>
+                            <th>排片占比</th>
+                            <th>上映天数</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for(var i = 0;i < all[0].films.length;i++){ %>
+                        <tr id="r_<%= all[0].films[i].id %>">
+                            <td><%= all[0].films[i].order %></td>
+                            <td><%= all[0].films[i].name %></td>
+                            <td><%= all[0].films[i].ptime %></td>
+                            <td><%= all[0].films[i].rate %></td>
+                            <td><%= all[0].films[i].pall %></td>
+                            <td><%= all[0].films[i].prate %></td>
+                            <td><%= all[0].films[i].days %></td>
+                            <td>
+                                <% if(all[0].films[i].img.isup != ''){ %>
+                                <img src="<%= all[0].films[i].img.isup %>" alt="img">
+                                <% } %>
+                                <%= all[0].films[i].img.grade %>
+                            </td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+                    <div id="uptime">
+                        <div class="pull-left">
+                            <span>北京时间 9:50 更新</span>
+                            （每30分钟更新一次）
+                            <br>
+                            注：实时票房包含今天未开映场次已售出的票房）
+                        </div>
+                        <a class="pull-right" href="#">查看详细&raquo;</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <% for(var i = 0;i < all[0].imgs.length;i++){ %>
+                    <div id="rimg_<%= all[0].imgs[i].id %>" class="rimg-list">
+                        <div class="thumbnail">
+                            <img src="<%= all[0].imgs[i].img %>" alt="pic">
+                            <div class="caption">
+                                <p><strong><%= all[0].imgs[i].rMoviename %></strong></p>
+                                <p><%= all[0].imgs[i].rCountry %></p>
+                                <p><%= all[0].imgs[i].rRuntime %></p>
+                                <p><%= all[0].imgs[i].rDaoyan %></p>
+                                <p><%= all[0].imgs[i].rBianju %></p>
+                                <p><%= all[0].imgs[i].rYanyuan %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="today">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="/paipian">
+                            <p>今日排片</p>
+                        </a>
+                    </div>
+                    <h4><%= all[0].titles.day %>全国拍片统计</h4>
+                    <div class="panel-body">
+                        <div id="canvas-container" style="width: 200px;height: 200px;margin: -15px 5px 5px 30px">
+                            <canvas id="tdchart" width="200" height="200">
+                            </canvas>
+                        </div>
+                        <% all[0].films.forEach(function (data) { %>
+                        <p>
+              <span>
+                <span class="glyphicon glyphicon-cd"></span>
+              </span>
+                            &nbsp;&nbsp;&nbsp;<%= data.name %>
+                            <span><%= data.prate %></span>
+                        </p>
+                        <% }) %>
+                        <a class="pull-right" href="#">查看详细&raquo;</a>
+                    </div>
+                </div>
+            </div>
+            <div id="comming-comtainer" class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="/coming">
+                            <p>即将上映</p>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <table id="comming" class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>上映日期</th>
+                                <th>影片名称</th>
+                                <th>影片类别</th>
+                                <th>购票指数</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% for(var i = 1;i < all[0].releases.length;i++){ %>
+                            <tr>
+                                <td><%= all[0].releases[i].date %></td>
+                                <td title="<%= all[0].releases[i].name %>"><%= all[0].releases[i].name %></td>
+                                <td><%= all[0].releases[i].type %></td>
+                                <td><%= all[0].releases[i].index %></td>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                        <a class="pull-right" href="#">查看详细&raquo;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="history" class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="/history">
+                            <p>推荐榜单</p>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a href="#">内地总票房排名</a>
+                                <span class=" pull-right glyphicon glyphicon-play"></span>
+                            </li>
+                            <% all[0].bangdan[0].aTop.forEach(function (d) { %>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="<%= d.href %>">
+                                        <img src="<%= d.img %>" alt="<%= d.title %>">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <p><%= d.title %></p>
+                                        <p>
+                                            <%= d.content %>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <% }) %>
+                        </ul>
+                        <ul class="media-list">
+                            <li class="media">
+                                <a href="#">内地总票房排名</a>
+                                <span class=" pull-right glyphicon glyphicon-play"></span>
+                            </li>
+                            <% all[0].bangdan[0].dTop.forEach(function (d) { %>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="<%= d.href %>">
+                                        <img src="<%= d.img %>" alt="<%= d.title %>">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <p><%= d.title %></p>
+                                        <p>
+                                            <%= d.content %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <% }) %>
+                        </ul>
+                        <ul class="media-list">
+                            <li class="media">
+                                <a href="#">内地总票房排名</a>
+                                <span class=" pull-right glyphicon glyphicon-play"></span>
+                            </li>
+                            <% all[0].bangdan[0].bTop.forEach(function (d) { %>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="<%= d.href %>">
+                                        <img src="<%= d.img %>" alt="<%= d.title %>">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <p><%= d.title %></p>
+                                        <p>
+                                            <%= d.content %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <% }) %>
+                        </ul>
+                        <a class="pull-right" href="#">查看详细&raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="news" class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>
+                <a href="/newslist">最新要闻</a>
+            </p>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-5">
+                <a href="#">
+                    <img src="<%= all[0].footers[0].pic %>" class="img-responsive" alt="">
+                </a>
+            </div>
+            <div class="col-md-7">
+                <a href="<%= all[0].footers[0].href %>">
+                    <h3><%= all[0].footers[0].title %></h3>
+                </a>
+                <p><%= all[0].footers[0].time %></p>
+                <p><%= all[0].footers[0].content %></p>
+                <ul>
+                    <% all[0].footers[0].news.forEach(function (d) { %>
+                    <li><a href="<%= d.href %>">
+                            <%= d.title %>
+                        </a><%= d.time %>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('div.rimg-list:first').css({'display': 'block'});
+        $('#changeImg table tbody tr').hover(function (data) {
+            var imgId = $(this).attr('id').replace('r_', 'rimg_');
+            $('div.rimg-list').css({'display': 'none'});
+            $('#' + imgId).css({'display': 'block'});
+            $('#changeImg').css({background: "url($('#' + imgId).find('img').attr('href'))"});
+        });
+        var charData = '';
+        $.ajax({
+            url: '/api',
+            dataType: 'json',
+            success: function (d) {
+                var ctx = $('#tdchart').get(0).getContext("2d");
+                new Chart(ctx).Doughnut(d[0].data, {responsive: true, percentageInnerCutout: 60});
+            }
+        })
+
+    })
+</script>
+
+<% include footer %>
