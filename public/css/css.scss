@@ -449,8 +449,13 @@ body {
     li{
       a{
         @include a-gray;
-        span{
-          color: $blue;
+        span {
+          &.ac{
+            color: $blue;
+          }
+          &.dis{
+            color: gray;
+          }
         }
       }
       padding:2px 5px 2px 0;

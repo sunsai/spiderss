@@ -38,8 +38,8 @@
       <div class="container">
         <ul id="ulimg" class="list-inline">
           <li class="disabled">
-            <a href="#">
-              <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+            <a href="#" class="btn">
+              <span aria-hidden="true" class=" dis glyphicon glyphicon-chevron-left"></span>
             </a>
           </li>
           <% data.forEach(function (its) { %>
@@ -50,9 +50,9 @@
             </a>
           </li>
           <% }) %>
-          <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-chevron-right"></span>
+          <li class="disabled">
+            <a class="btn" href="#">
+              <span class="dis glyphicon glyphicon-chevron-right disabled"></span>
             </a>
           </li>
         </ul>
@@ -63,13 +63,48 @@
 </div>
 <script>
   $(document).ready(function () {
+    var step = 5;
     var lis = $('#ulimg li').css({'display': ''});
     var len = lis.length;
+    var left = lis[0];
+    var rigth = lis[len - 1]
+    if (len - 1 > step) {
+      $(left).find('a span').removeClass('dis').addClass('ac');
+      $(rigth).find('a').addClass('disabled');
+    }
+    var pre = lis[1];
+    var nt = lis[step];
     lis.each(function (idx, item) {
-      if (idx > 5 && idx < len - 1) {
+      if (idx > step && idx < len - 1) {
         $(this).css({'display': 'none'});
       }
-      console.log($(this).css('display'));
+    })
+    lis.first().click(function () {
+      $(pre).css({'display': 'none'});
+      pre = $(pre).next();
+      $(nt).next().css({'display': ''});
+      nt = $(nt).next();
+      console.log(nt.get(0));
+      if ($(nt).next().get(0) != rigth) {
+        lis.find('a span').removeClass('dis').addClass('ac');
+      }
+      else {
+        $(left).find('a span').removeClass('ac').addClass('dis');
+        $(left).find('a').addClass('disabled');
+      }
+    })
+    lis.last().click(function () {
+      $(pre).prev().css({'display': ''});
+      pre = $(pre).prev();
+      if ($(pre).prev().get(0) != left) {
+        lis.find('a span').removeClass('dis').addClass('ac');
+      }
+      else {
+        $(rigth).find('a span').removeClass('ac').addClass('dis');
+        $(rigth).find('a').addClass('disabled');
+      }
+      $(nt).css({'display': 'none'});
+      nt = $(nt).prev();
     })
   })
 </script>

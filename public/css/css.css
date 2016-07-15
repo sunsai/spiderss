@@ -487,8 +487,11 @@ body {
   font-weight: 600;
   text-wrap: none;
 }
-#moives-container ul li a span {
+#moives-container ul li a span.ac {
   color: #00A0E9;
+}
+#moives-container ul li a span.dis {
+  color: gray;
 }
 #moives-container .list-group a {
   text-align: center;
